@@ -1,0 +1,57 @@
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.venv/
+venv/
+.env
+.venv*
+
+# Node
+node_modules/
+.npm/
+.pnpm-store/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+*.tfplan
+.override.tf
+.override.tf.json
+terraform.rc
+
+# Logs / runtime artifacts
+*.log
+*.out
+*.tmp
+
+# Build / package outputs
+build/
+dist/
+out/
+coverage/
+
+# Internal documentation exclusions
+DOCUMENTATION/INTERNAL/
+DOCUMENTATION/INTERNAL/**
+
+# Optional project-local secrets
+*.pem
+*.key
+*.crt
+secrets/
+
+# Local environment files
+.env.local
+.env.*.local
