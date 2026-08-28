@@ -23,7 +23,7 @@ Suggested fields:
 - Notes
 
 ### Contact
-Represents the wedding couple, family contact, or primary decision-maker.
+Represents the wedding couple, family contact, wedding planner or primary decision-maker.
 
 Suggested fields:
 - Name

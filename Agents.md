@@ -156,3 +156,26 @@ Use the repo as a working lab, not only as a document set:
 - `DOCUMENTATION/INTERNAL/roadmap.md` — learning progression and next tasks
 
 The objective is to learn by designing, testing, and explaining realistic flows instead of only studying theory.
+
+## Infrastructure checklist
+The current project expects a realistic mock cloud footprint. The infrastructure plan is documented here:
+- `TERRAFORM/cloud-infrastructure-checklist.md`
+
+This checklist covers messaging, Redis, observability, security, networking, and Terraform requirements for the existing architecture.
+
+## Environment and delivery model
+The project will use a four-stage environment model:
+- DEV
+- TEST
+- STAGING
+- PROD
+
+For the current phase, we are focusing on the DEV environment first. The remaining environments will follow the same architecture and delivery principles but will add stricter validation, promotion gates, and operational controls.
+
+The repository will also follow a GitOps delivery approach using Git as the source of truth, with declarative infrastructure and deployment state managed through a GitOps controller such as Argo CD or Flux.
+
+This means:
+- infrastructure and configuration changes are made through Git
+- deployment promotion follows an environment path
+- drift and sync health are continuously monitored
+- rollback and environment consistency are treated as first-class concerns

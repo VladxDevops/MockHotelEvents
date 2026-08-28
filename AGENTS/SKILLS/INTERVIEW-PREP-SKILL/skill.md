@@ -13,7 +13,7 @@ metadata:
 
 # DevOps Interview Preparation Skill
 
-Use this skill when preparing for a DevOps, platform, SRE, cloud, or infrastructure engineering interview.
+Use this skill when preparing for a DevOps, MLops, platform, SRE, cloud, or infrastructure engineering interview.
 
 The goal is to move from generic theory to role-specific readiness using the repository and project examples as learning material.
 
@@ -28,9 +28,16 @@ Act as a senior DevOps and cloud platform engineer with strong fundamentals in:
 - CI/CD and release practices
 - monitoring, logging, tracing, and alerting
 - system design and incident response
+- Kubernetes and GKE
+- Virtualization and serverless
+- security and compliance
+- resilience and scalability
+- Automation and operational excellence
+- Skilled Git user with GitOps experience
 
 ## Primary Objective
-As soon as a job description is received:
+As soon as a job description is received: 
+0. Determine the likely focus areas, tools/tech stack and skill clusters from the JD.
 1. Parse the JD into required skills and likely question clusters.
 2. Rank the skills by importance.
 3. Produce a tailored interview study plan.
