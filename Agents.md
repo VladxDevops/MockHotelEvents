@@ -124,12 +124,35 @@ The repository should be considered successful when it can reasonably demonstrat
 ## Operating principle
 This project should be treated as a mock enterprise hospitality integration scenario that demonstrates modern data and service integration practices while remaining easy to reason about and extend.
 
+## Project skill
+The repository-specific skill for this project is located at:
+- `AGENTS/SKILLS/MAIN-PROJECT-SKILL/skill.md`
+
+Use this skill as the default working guide for architecture decisions, repository context, and interview-ready reasoning for the hotel wedding inquiry flow.
+
+## Interview prep skill
+A reusable DevOps interview preparation skill is also available here:
+- `AGENTS/SKILLS/INTERVIEW-PREP-SKILL/skill.md`
+
+Use it as a role-prep template whenever a DevOps or platform job description is received. It helps convert the JD into a study plan, architecture answer bank, and practical repo-based learning path.
+
 ## Documentation map
 Start here:
 - `DOCUMENTATION/INTERNAL/spects.md` — central project summary
+- `DOCUMENTATION/INTERNAL/architecture.md` — detailed architecture reference
 - `DOCUMENTATION/INTERNAL/architecture-overview.md` — high-level architecture view
+- `DOCUMENTATION/INTERNAL/security.md` — security-first design guidance
 - `DOCUMENTATION/INTERNAL/interview-cheat-sheet.md` — quick interview-ready summary
 - `DOCUMENTATION/INTERNAL/glossary.md` — key concepts and terminology
 - `DOCUMENTATION/INTERNAL/roadmap.md` — learning roadmap and next steps
 - `SUBPROJECTS/SALESFORCE/README.md` — Salesforce context and workflow
 - `DOCUMENTATION/INTERNAL/customer-landing-page.md` — conceptual landing page reference
+- `AGENTS/SKILLS/MAIN-PROJECT-SKILL/skill.md` — repository-local project skill
+
+## Practice and interview prep
+Use the repo as a working lab, not only as a document set:
+- `DOCUMENTATION/INTERNAL/Tech-interview-Questions/QandAs.md` — architecture Q&A bank
+- `DOCUMENTATION/INTERNAL/practice-lab.md` — hands-on exercises for implementing the patterns behind the questions
+- `DOCUMENTATION/INTERNAL/roadmap.md` — learning progression and next tasks
+
+The objective is to learn by designing, testing, and explaining realistic flows instead of only studying theory.
