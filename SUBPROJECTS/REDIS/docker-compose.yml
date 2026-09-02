@@ -1,0 +1,26 @@
+services:
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    command: ["redis-server", "--save", "60", "1", "--appendonly", "yes"]
+
+  app:
+    build:
+      context: ./container
+      dockerfile: Dockerfile
+    depends_on:
+      - redis
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - FLASK_ENV=development
+    ports:
+      - "5000:5000"
+    restart: on-failure
+
+volumes:
+  redis-data:

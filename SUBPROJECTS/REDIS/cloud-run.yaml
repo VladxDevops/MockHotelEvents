@@ -1,0 +1,24 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: redis-client
+  namespace: default
+spec:
+  template:
+    spec:
+      containers:
+        - image: "gcr.io/PROJECT/redis-client:latest" # replace with your image
+          env:
+            - name: REDIS_HOST
+              value: "REPLACE_WITH_MEMORYSTORE_PRIVATE_IP"
+            - name: REDIS_PORT
+              value: "6379"
+            - name: REDIS_PASSWORD
+              value: ""
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "1"
+          ports:
+            - containerPort: 8080
+      containerConcurrency: 80
