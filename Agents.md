@@ -136,8 +136,24 @@ A reusable DevOps interview preparation skill is also available here:
 
 Use it as a role-prep template whenever a DevOps or platform job description is received. It helps convert the JD into a study plan, architecture answer bank, and practical repo-based learning path.
 
+## Progressive disclosure skill
+The context engineering and knowledge architecture skill for this project is located at:
+- `AGENTS/SKILLS/PROGRESSIVE-DISCLOSURE-SKILL/SKILL.md`
+
+Use this skill when refactoring docs, organizing cross-service knowledge, managing the control plane (`AI_MANIFEST.toml`), or loading targeted context tiers for AI agents.
+
+## Context and progressive disclosure protocol
+Before generating or modifying code or documentation:
+1. Identify the relevant project domain (Salesforce, MuleSoft, Kafka, Redis, Terraform).
+2. Follow the 4-tier progressive disclosure model (`AI_MANIFEST.toml` and `AGENTS/SKILLS/PROGRESSIVE-DISCLOSURE-SKILL/`).
+3. Load only the minimum required tier for the current task (Tier 1 -> Tier 2 -> Tier 3).
+4. Follow documentation breadcrumbs before performing broad searches.
+5. Do not read entire documentation trees unless explicitly necessary.
+6. Create or update documentation according to the same navigation, TOML metadata, and retrieval conventions.
+
 ## Documentation map
 Start here:
+- `AI_MANIFEST.toml` — machine-readable knowledge base control plane
 - `DOCUMENTATION/INTERNAL/spects.md` — central project summary
 - `DOCUMENTATION/INTERNAL/architecture.md` — detailed architecture reference
 - `DOCUMENTATION/INTERNAL/architecture-overview.md` — high-level architecture view
@@ -148,6 +164,7 @@ Start here:
 - `SUBPROJECTS/SALESFORCE/README.md` — Salesforce context and workflow
 - `DOCUMENTATION/INTERNAL/customer-landing-page.md` — conceptual landing page reference
 - `AGENTS/SKILLS/MAIN-PROJECT-SKILL/skill.md` — repository-local project skill
+- `AGENTS/SKILLS/PROGRESSIVE-DISCLOSURE-SKILL/SKILL.md` — progressive disclosure context engineering skill
 
 ## Practice and interview prep
 Use the repo as a working lab, not only as a document set:

@@ -195,3 +195,30 @@ For the first implementation phase:
 - We are starting with the DEV environment to validate the project patterns before scaling the GitOps model across the remaining stages.
 - The four-environment approach is intended to keep the project realistic while making the deployment workflow teachable and interview-ready.
 - GitOps is used to drive environment consistency, repeatability, and operational traceability.
+
+## Current repo-alignment notes
+
+The checklist below remains broadly accurate for the project, but it should be updated to reflect the concrete service pattern the repo is describing:
+
+- Salesforce remains the customer and sales interaction boundary.
+- Mulesoft is the orchestration and transformation layer between CRM, hotel services, and event messaging.
+- Pub/Sub is the primary asynchronous messaging backbone for inquiry and booking lifecycle events.
+- Kafka may be used as an optional higher-throughput stream layer or integration pattern for event processing.
+- GCP hosts the cloud-native runtime, managed services, networking, auth, monitoring, and IaC workflow.
+- Redis/MemoryStore is a cache or transient-state layer, not the system of record.
+- The project should model an operational source-of-truth for bookings and inventory, even if the mock implementation keeps it lightweight.
+
+### Suggested GCP service mapping for this repo
+- [ ] Cloud Run or GKE for API and event processing services
+- [ ] Pub/Sub topics and subscriptions for lead, inquiry, availability, quote, and booking events
+- [ ] Kafka or a managed streaming add-on where higher-throughput event processing is demonstrated
+- [ ] Memorystore for Redis for cached availability and quote snapshots
+- [ ] Cloud SQL, Spanner, or equivalent lightweight operational datastore for booking/operational records
+- [ ] Cloud Monitoring + Cloud Logging + Cloud Trace for telemetry and flow health
+- [ ] OpenTelemetry collectors or SDK instrumentation in all services
+- [ ] Secret Manager for sensitive credentials and integration secrets
+- [ ] Artifact Registry for container images and deployment artifacts
+- [ ] IAM / Workload Identity / service accounts for least-privilege access
+- [ ] VPC + private networking + firewall rules for internal service communication
+- [ ] Cloud Build or GitHub Actions for CI/CD validation and image build pipeline
+- [ ] Argo CD or Flux for GitOps delivery across environments

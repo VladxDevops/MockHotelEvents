@@ -1,8 +1,10 @@
 internal. 
 
 Prompts: 
-#Elaboration: 
-- Explain the following stories in terms of internal trafic, external trafic: 
+
+Prompt1: 
+Elaboration: 
+Explain the following stories in terms of internal trafic, external trafic: 
 
 Example 1, taken from Archtecture documentation: 
 1. Customer submits a wedding inquiry.
@@ -17,14 +19,11 @@ Example 1, taken from Archtecture documentation:
 10. Operations teams are notified and the event is scheduled.
 
 
-Example 2, taken from
-
-
 
 (what other concepts can be added? Where do we place this documentation with its answers?)
 
 
-#explain the following concepts: 
+Explain the following concepts: 
 - idempotent consumers. Does this means that this prevents same customers to be twice or more in the system? 
 - retries with backoff. 
 - dead-letter or failed-message handling. 
@@ -48,18 +47,24 @@ Please add the output to the Glosary.md.
 
 
 
-
-#Planning and scalability: 
-- Please make a roadmap and the planning and all that is necessary to take this project to something that can be offered to differrent clients like different hotels wit the intention to: (options:): 
-sale this repo as a template
-work for different hospitality service providers as an employee/freelance/contrator/B2B
-what other option there are? 
+Prompt2: 
+Planning and scalability: 
+- Please make a roadmap and the planning and all that is necessary to take this project to something that can be offered to differrent clients like different hotels wit the intention to: (examples/options:): 
+Sale this repo as a template. 
+Work for different hospitality service providers as an employee/freelance/contrator/B2B. 
+What other option there are? 
 Please list how success can be messure. 
-you can print to this product-ROADMAP.md and if necessary generate more .md files
+You can print to the /PLANNING/PRODUCT-ROADMAP/product-ROADMAP.md and if necessary generate more .md files
 
 
 
 
-
-#DATA
+prompt3: 
+DATA: 
 - Where is the data going to be stored? What will be the type of database/s used for these projects? 
+
+Propmt4: 
+What is tenant configuration and tenant data? 
+What is DLQ handling?
+What is white-label managed platform? 
+What options there are in regards to CRMs? Does salesfoce offer a free account or test/try account? What do we need to start using salesforce or what other CRM has free or open source access? 
