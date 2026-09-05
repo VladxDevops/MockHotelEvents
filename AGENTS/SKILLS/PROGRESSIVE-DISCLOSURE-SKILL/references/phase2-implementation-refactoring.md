@@ -49,7 +49,7 @@ When executing batch edits, continuously print descriptive progress updates:
 --------------------------------------------------------------------------------
 [30%] Standardizing breadcrumbs in ARCHITECTURE/wedding-inquiry-event-schema.md...
 --------------------------------------------------------------------------------
-[50%] Updating SUBPROJECTS/Mulesoft/ README with Tier 3 API contracts...
+[50%] Updating APPS/Mulesoft/ README with Tier 3 API contracts...
 --------------------------------------------------------------------------------
 [70%] Linking Redis availability cache policies to canonical specs...
 --------------------------------------------------------------------------------
@@ -89,17 +89,17 @@ difficulty = "intermediate"
 parent = "DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md"
 children = []
 related = [
-    "SUBPROJECTS/Mulesoft/README.md",
+    "APPS/Mulesoft/README.md",
     "DOCUMENTATION/INTERNAL/spects.md",
-    "PLATFORM/TERRAFORM/cloud-infrastructure-checklist.md"
+    "PLATFORM/PROVIDERS/GCP/TERRAFORM/cloud-infrastructure-checklist.md"
 ]
 updated_by = "AI Context Specialist"
 version = "1.0"
 +++
 
 > **Parent**: [`architecture.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md)  
-> **Related**: [`Mulesoft/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/SUBPROJECTS/Mulesoft/README.md) | [`spects.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/spects.md)  
-> **Infrastructure**: [`cloud-infrastructure-checklist.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/TERRAFORM/cloud-infrastructure-checklist.md)
+> **Related**: [`Mulesoft/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/APPS/Mulesoft/README.md) | [`spects.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/spects.md)  
+> **Infrastructure**: [`cloud-infrastructure-checklist.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/PROVIDERS/GCP/TERRAFORM/cloud-infrastructure-checklist.md)
 
 <!-- AI RETRIEVAL HINTS:
 - Purpose: Defines the Redis/Memorystore caching keyspace, eviction policies, and TTL for ballroom availability.

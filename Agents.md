@@ -1,3 +1,31 @@
++++
+title = "Hotel Events Planning - Main Agent Guide"
+domain = "repository-index"
+topics = ["core-specs", "wedding-inquiry", "requirements", "routing"]
+difficulty = "intermediate"
+progressive_tier = "Tier 1"
+parent = ""
+children = []
+related = [
+    "DOCUMENTATION/INTERNAL/spects.md",
+    "DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md",
+    "DOCUMENTATION/INTERNAL/security.md",
+    "APPS/SALESFORCE/README.md",
+    "APPS/REDIS/README.md"
+]
+updated_by = "AI Context Specialist"
+version = "1.0"
++++
+
+> **Related**: [`spects.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/spects.md) | [`architecture.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md) | [`security.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/security.md) | [`README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/APPS/SALESFORCE/README.md)  
+> **Progressive Tier**: Tier 1
+
+<!-- AI RETRIEVAL HINTS:
+- Purpose: Provides internal project knowledge for the Hotel Events wedding inquiry architecture, interview readiness, and implementation planning.
+- Questions Answered: What internal knowledge should be loaded before deeper component work?
+- When to Retrieve: Working on repository index context for the Hotel Events wedding inquiry platform.
+- When NOT to Retrieve: Working on unrelated generated assets, dependency lockfiles, or implementation code that does not need documentation context.
+-->
 # Hotel Events Planning - Main Agent Guide
 
 ## Purpose

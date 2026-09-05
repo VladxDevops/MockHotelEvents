@@ -1,6 +1,43 @@
++++
+title = "Project Transcripts"
+domain = "project-ledger"
+topics = ["changelog", "project-ledger", "hotel-events"]
+difficulty = "intermediate"
+progressive_tier = "Tier 2"
+parent = "AI_MANIFEST.toml"
+children = []
+related = [
+    "DOCUMENTATION/INTERNAL/spects.md",
+    "DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md",
+    "DOCUMENTATION/INTERNAL/security.md",
+    "APPS/SALESFORCE/README.md",
+    "APPS/REDIS/README.md"
+]
+updated_by = "AI Context Specialist"
+version = "1.0"
++++
+
+> **Parent**: [`AI_MANIFEST.toml`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/AI_MANIFEST.toml)  
+> **Related**: [`spects.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/spects.md) | [`architecture.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md) | [`security.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/security.md) | [`README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/APPS/SALESFORCE/README.md)  
+> **Progressive Tier**: Tier 2
+
+<!-- AI RETRIEVAL HINTS:
+- Purpose: Provides internal project knowledge for the Hotel Events wedding inquiry architecture, interview readiness, and implementation planning.
+- Questions Answered: What internal knowledge should be loaded before deeper component work?
+- When to Retrieve: Working on project ledger context for the Hotel Events wedding inquiry platform.
+- When NOT to Retrieve: Working on unrelated generated assets, dependency lockfiles, or implementation code that does not need documentation context.
+-->
 # Project Transcripts
 
 Short project notes and major decisions for the Hotel Events Planning learning repository.
+
+## 2026-09-04 — Repository-wide Progressive Disclosure normalization
+- Applied the local `AGENTS/SKILLS/PROGRESSIVE-DISCLOSURE-SKILL/` guidance to Markdown documentation across the repository.
+- Standardized non-executable documentation with TOML front matter, file-based breadcrumbs, progressive tier labels, and AI retrieval hints.
+- Created lightweight README indexes for documentation folders with Markdown content so agents can load local context progressively.
+- Added `APPS/KAFKA/README.md` as the current Kafka event-streaming documentation entry point and aligned manifest references to the actual app/platform layout.
+- Preserved executable `AGENTS/SKILLS/**/SKILL.md` YAML metadata to avoid breaking skill discovery.
+- No files were moved, deleted, split, or merged during this pass.
 
 ## 2026-09-03 — Progressive Disclosure & Context Engineering System
 - Brought and adapted the Progressive Disclosure skill from the Bank project to `AGENTS/SKILLS/PROGRESSIVE-DISCLOSURE-SKILL/`.

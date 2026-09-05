@@ -32,8 +32,8 @@ Target environments and AI systems optimized by this guide:
    - Internal Core: `DOCUMENTATION/INTERNAL/` (`spects.md`, `architecture.md`, `security.md`, `glossary.md`)
    - Internal Architecture: `DOCUMENTATION/INTERNAL/ARCHITECTURE/` (event schemas, flow examples)
    - Practice & Interview: `DOCUMENTATION/INTERNAL/practice-lab.md`, `Learning-Qs-As/`
-   - Subprojects: `SUBPROJECTS/SALESFORCE/`, `SUBPROJECTS/Mulesoft/`, `SUBPROJECTS/KAFKA/`, `SUBPROJECTS/REDIS/`, `SUBPROJECTS/GCP-INFRASTRUCTURE/`
-   - Platform: `PLATFORM/TERRAFORM/`, `PLATFORM/OBSERVABILITY/`, `PLATFORM/SECURITY/`
+   - Subprojects: `SUBPROJECTS/SALESFORCE/`, `APPS/Mulesoft/`, `APPS/KAFKA/`, `APPS/REDIS/`, `PLATFORM/PROVIDERS/GCP/INFRASTRUCTURE/`
+   - Platform: `PLATFORM/PROVIDERS/GCP/TERRAFORM/`, `PLATFORM/PROVIDERS/GCP/OBSERVABILITY/`, `PLATFORM/SECURITY/`
 2. **Inspect Every Markdown File:** Identify the primary purpose, audience, and scope of each document.
 3. **Map Relationships:** Identify which document serves as the parent, child, or sibling.
 4. **Refactor Before Rewriting:** Preserve accurate text, code blocks, and diagrams. Only restructure formatting, hierarchy, and metadata.
@@ -46,7 +46,7 @@ If technical details or relationships are ambiguous:
 
 Examples of appropriate questions:
 - *"I found multiple wedding inquiry payload examples across MuleSoft and Kafka. Which schema is the authoritative event contract?"*
-- *"Should the Redis cache TTL strategy be documented in SUBPROJECTS/REDIS/README.md or in the MuleSoft Process API guide?"*
+- *"Should the Redis cache TTL strategy be documented in APPS/REDIS/README.md or in the MuleSoft Process API guide?"*
 - *"I found duplicate security checklists in DOCUMENTATION/INTERNAL/security.md and PLATFORM/SECURITY/. Should we consolidate them under security.md and link from the platform folder?"*
 
 **PROHIBITIONS:**
@@ -114,7 +114,7 @@ Instead of loading an all-in-one 2,000-line `HotelEventsComplete.md`, the agent 
 - **`DOCUMENTATION/INTERNAL/spects.md`** -> Core wedding journey specs & boundaries
 - **`DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md`** -> High-level system topology
 - **`DOCUMENTATION/INTERNAL/ARCHITECTURE/wedding-inquiry-event-schema.md`** -> Precise event contract
-- **`SUBPROJECTS/Mulesoft/`** -> API orchestration endpoints
+- **`APPS/Mulesoft/`** -> API orchestration endpoints
 - **`TROUBLESHOOTING/`** -> Specific error resolution playbooks
 
 ---
@@ -147,13 +147,13 @@ topics = ["mulesoft", "apis", "orchestration", "wedding-inquiry", "redis-caching
 difficulty = "intermediate"
 parent = "DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md"
 children = [
-    "SUBPROJECTS/Mulesoft/endpoints/availability.md",
-    "SUBPROJECTS/Mulesoft/endpoints/quote.md"
+    "APPS/Mulesoft/endpoints/availability.md",
+    "APPS/Mulesoft/endpoints/quote.md"
 ]
 related = [
-    "SUBPROJECTS/SALESFORCE/README.md",
-    "SUBPROJECTS/REDIS/README.md",
-    "SUBPROJECTS/KAFKA/README.md"
+    "APPS/SALESFORCE/README.md",
+    "APPS/REDIS/README.md",
+    "APPS/KAFKA/README.md"
 ]
 updated_by = "AI Context Specialist"
 version = "1.0"
@@ -167,7 +167,7 @@ Every document must clearly state:
 1. **Why would an AI retrieve me?** (e.g., *"Retrieve when implementing or debugging MuleSoft API transformations for wedding inquiries."*)
 2. **What questions do I answer?** (e.g., *"How does MuleSoft normalize the Salesforce lead into a Kafka event?"*)
 3. **What documents should be loaded before me?** (Prerequisites, e.g., `DOCUMENTATION/INTERNAL/spects.md`)
-4. **What documents should be loaded after me?** (Downstream specs, e.g., `SUBPROJECTS/KAFKA/README.md`)
+4. **What documents should be loaded after me?** (Downstream specs, e.g., `APPS/KAFKA/README.md`)
 
 ---
 

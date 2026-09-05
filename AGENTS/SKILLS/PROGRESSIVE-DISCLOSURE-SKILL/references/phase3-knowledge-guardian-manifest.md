@@ -96,10 +96,10 @@ graph LR
 
     subgraph "Tier 3: Subprojects"
         A1 --> SF["SUBPROJECTS/SALESFORCE/"]
-        A1 --> MS["SUBPROJECTS/Mulesoft/"]
-        A1 --> KF["SUBPROJECTS/KAFKA/"]
-        A1 --> RD["SUBPROJECTS/REDIS/"]
-        A1 --> TF["PLATFORM/TERRAFORM/"]
+        A1 --> MS["APPS/Mulesoft/"]
+        A1 --> KF["APPS/KAFKA/"]
+        A1 --> RD["APPS/REDIS/"]
+        A1 --> TF["PLATFORM/PROVIDERS/GCP/TERRAFORM/"]
     end
 
     subgraph "Tier 4: Operations & Lab"

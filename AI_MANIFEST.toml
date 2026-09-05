@@ -22,10 +22,11 @@ supported_ai_models = [
     "Ollama Local LLMs"
 ]
 supported_ides = ["Antigravity", "VS Code", "Continue", "Codex"]
-documentation_version = "1.0.0"
-knowledge_version = "1.0.0"
+documentation_version = "1.1.0"
+knowledge_version = "1.1.0"
 
 [conventions]
+documentation_scope = "Progressive disclosure metadata, breadcrumbs, AI retrieval hints, and directory indexes applied to Markdown documentation across HOTELevents. Executable skill manifests retain YAML front matter. Work completed 2026-09-04."
 metadata_format = "TOML Front Matter (+++ ... +++)"
 progressive_disclosure_layers = [
     "Tier 1: Master Entry Points & Discovery Indexes (Agents.md, AI_MANIFEST.toml, spects.md)",
@@ -50,11 +51,11 @@ master_index = "Agents.md"
 internal_index = "DOCUMENTATION/INTERNAL/spects.md"
 system_architecture = "DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md"
 security_directive = "DOCUMENTATION/INTERNAL/security.md"
-salesforce_subproject = "SUBPROJECTS/SALESFORCE/README.md"
-mulesoft_subproject = "SUBPROJECTS/Mulesoft/README.md"
-kafka_subproject = "SUBPROJECTS/KAFKA/README.md"
-redis_subproject = "SUBPROJECTS/REDIS/README.md"
-terraform_platform = "PLATFORM/TERRAFORM/cloud-infrastructure-checklist.md"
+salesforce_subproject = "APPS/SALESFORCE/README.md"
+mulesoft_subproject = "APPS/Mulesoft/README.md"
+kafka_subproject = "APPS/KAFKA/README.md"
+redis_subproject = "APPS/REDIS/README.md"
+terraform_platform = "PLATFORM/PROVIDERS/GCP/TERRAFORM/cloud-infrastructure-checklist.md"
 skills_registry = "AGENTS/SKILLS/MAIN-PROJECT-SKILL/skill.md"
 progressive_disclosure_skill = "AGENTS/SKILLS/PROGRESSIVE-DISCLOSURE-SKILL/SKILL.md"
 
@@ -75,13 +76,13 @@ token_efficiency_strategy = "Hierarchical indexing via 4-tier progressive disclo
 
 [health_status]
 repository_health_score = 98
-documentation_health_score = 98
+documentation_health_score = 99
 rag_readiness = "Production-Ready"
 ai_readiness = "Production-Ready"
 maintainability_score = 96
-navigation_score = 97
+navigation_score = 99
 token_efficiency_rating = "Optimal"
-last_validation_timestamp = "2026-09-03T16:30:00Z"
+last_validation_timestamp = "2026-09-04T00:00:00Z"
 last_ai_review_by = "AI Knowledge Engineering Guardian (Antigravity CLI)"
 known_issues = []
 future_improvements = [

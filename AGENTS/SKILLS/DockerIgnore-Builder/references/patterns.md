@@ -1,3 +1,32 @@
++++
+title = ".dockerignore pattern reference"
+domain = "agent-skills"
+topics = ["agent-skills", "context-engineering", "runbooks", "automation"]
+difficulty = "intermediate"
+progressive_tier = "Tier 4"
+parent = "Agents.md"
+children = []
+related = [
+    "DOCUMENTATION/INTERNAL/spects.md",
+    "DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md",
+    "DOCUMENTATION/INTERNAL/security.md",
+    "APPS/SALESFORCE/README.md",
+    "APPS/REDIS/README.md"
+]
+updated_by = "AI Context Specialist"
+version = "1.0"
++++
+
+> **Parent**: [`Agents.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/Agents.md)  
+> **Related**: [`spects.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/spects.md) | [`architecture.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md) | [`security.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/security.md) | [`README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/APPS/SALESFORCE/README.md)  
+> **Progressive Tier**: Tier 4
+
+<!-- AI RETRIEVAL HINTS:
+- Purpose: Documents agent-facing skills, runbooks, and context rules used while working in this repository.
+- Questions Answered: Which agent workflow or skill behavior applies to repository work?
+- When to Retrieve: Working on agent skills context for the Hotel Events wedding inquiry platform.
+- When NOT to Retrieve: Working on unrelated generated assets, dependency lockfiles, or implementation code that does not need documentation context.
+-->
 # .dockerignore pattern reference
 
 Annotated pattern tables used by `scripts/generate_dockerignore.py`. Use this file directly if you (the AI reading this) cannot execute code — follow the "Manual composition algorithm" at the bottom.

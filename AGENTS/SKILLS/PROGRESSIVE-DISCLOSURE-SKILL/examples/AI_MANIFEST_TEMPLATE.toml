@@ -30,7 +30,7 @@ metadata_format = "TOML Front Matter (+++ ... +++)"
 progressive_disclosure_layers = [
     "Tier 1: Master Entry Points & Discovery Indexes (Agents.md, AI_MANIFEST.toml, spects.md)",
     "Tier 2: System Architecture & Cross-Cutting Directives (DOCUMENTATION/INTERNAL/ARCHITECTURE/, security.md)",
-    "Tier 3: Domain & Subproject Implementation Guides (SUBPROJECTS/, PLATFORM/TERRAFORM/)",
+    "Tier 3: Domain & Subproject Implementation Guides (SUBPROJECTS/, PLATFORM/PROVIDERS/GCP/TERRAFORM/)",
     "Tier 4: Operational Runbooks, Practice Labs & Troubleshooting (TROUBLEMAKER/, practice-lab.md, TROUBLESHOOTING/)"
 ]
 breadcrumbs_standard = "Markdown headers with file:// links to parent, children, and related documents."
@@ -50,11 +50,11 @@ master_index = "Agents.md"
 internal_index = "DOCUMENTATION/INTERNAL/spects.md"
 system_architecture = "DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md"
 security_directive = "DOCUMENTATION/INTERNAL/security.md"
-salesforce_subproject = "SUBPROJECTS/SALESFORCE/README.md"
-mulesoft_subproject = "SUBPROJECTS/Mulesoft/README.md"
-kafka_subproject = "SUBPROJECTS/KAFKA/README.md"
-redis_subproject = "SUBPROJECTS/REDIS/README.md"
-terraform_platform = "PLATFORM/TERRAFORM/cloud-infrastructure-checklist.md"
+salesforce_subproject = "APPS/SALESFORCE/README.md"
+mulesoft_subproject = "APPS/Mulesoft/README.md"
+kafka_subproject = "APPS/KAFKA/README.md"
+redis_subproject = "APPS/REDIS/README.md"
+terraform_platform = "PLATFORM/PROVIDERS/GCP/TERRAFORM/cloud-infrastructure-checklist.md"
 skills_registry = "AGENTS/SKILLS/MAIN-PROJECT-SKILL/skill.md"
 
 [indexes]

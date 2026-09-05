@@ -75,7 +75,7 @@ All knowledge in the Hotel Events Planning repository is categorized into four p
   - [`Agents.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/Agents.md) (Canonical project definition and agent operating principles)
   - [`AI_MANIFEST.toml`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/AI_MANIFEST.toml) (Machine control plane and health status)
   - [`DOCUMENTATION/INTERNAL/spects.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/spects.md) (Core wedding inquiry specs & assumptions)
-  - Subproject index READMEs (`SUBPROJECTS/SALESFORCE/README.md`, `PLATFORM/TERRAFORM/README.md`)
+  - Subproject index READMEs (`APPS/SALESFORCE/README.md`, `PLATFORM/PROVIDERS/GCP/TERRAFORM/README.md`)
 - **Reading Scope:** Under 1,000 tokens. Answers: *Where does this component live? What is its role in the wedding flow?*
 
 ### Tier 2: System Architecture & Cross-Cutting Directives (Contextual)
@@ -153,9 +153,9 @@ difficulty = "intermediate"
 parent = "DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md"
 children = []
 related = [
-    "SUBPROJECTS/KAFKA/README.md",
-    "SUBPROJECTS/Mulesoft/README.md",
-    "SUBPROJECTS/REDIS/README.md"
+    "APPS/KAFKA/README.md",
+    "APPS/Mulesoft/README.md",
+    "APPS/REDIS/README.md"
 ]
 updated_by = "AI Context Specialist"
 version = "1.0"
@@ -166,7 +166,7 @@ version = "1.0"
 Immediately below the front matter, provide clickable navigation anchors:
 ```markdown
 > **Parent**: [`architecture.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md)  
-> **Related**: [`Mulesoft/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/SUBPROJECTS/Mulesoft/README.md) | [`REDIS/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/SUBPROJECTS/REDIS/README.md)  
+> **Related**: [`Mulesoft/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/APPS/Mulesoft/README.md) | [`REDIS/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/APPS/REDIS/README.md)  
 > **Next Recommended**: [`practice-lab.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/practice-lab.md)
 ```
 
@@ -195,8 +195,8 @@ Task: "How does MuleSoft validate ballroom availability against Redis?"
   ├─ 2. Check Tier 2 Link: architecture.md (Locate MuleSoft-to-Redis integration boundary)
   │
   └─ 3. Ingest Tier 3 Only:
-        - SUBPROJECTS/Mulesoft/ (API endpoints)
-        - SUBPROJECTS/REDIS/ (Key naming & TTL)
+        - APPS/Mulesoft/ (API endpoints)
+        - APPS/REDIS/ (Key naming & TTL)
         [DO NOT load Terraform, Salesforce UI, or TROUBLEMAKER runbooks!]
 ```
 
@@ -204,10 +204,10 @@ Task: "How does MuleSoft validate ballroom availability against Redis?"
 
 | User Question / Task Domain | Required Ingestion Sequence | Files to Avoid Loading |
 | :--- | :--- | :--- |
-| **Salesforce Lead Lifecycle** | `Agents.md` -> `SUBPROJECTS/SALESFORCE/README.md` | Terraform, Kafka manifests, OTel collector configs |
-| **Event Streaming & Schemas** | `spects.md` -> `ARCHITECTURE/wedding-inquiry-event-schema.md` -> `SUBPROJECTS/KAFKA/` | Salesforce Apex/LWC, GCP IAM policies |
-| **Caching & Transient State** | `spects.md` -> `SUBPROJECTS/REDIS/README.md` | Full Terraform state, Landing page mockups |
-| **Infrastructure & CI/CD** | `Agents.md` -> `PLATFORM/TERRAFORM/cloud-infrastructure-checklist.md` -> `PLATFORM/TERRAFORM/` | Salesforce sales stage details, Interview Q&A |
+| **Salesforce Lead Lifecycle** | `Agents.md` -> `APPS/SALESFORCE/README.md` | Terraform, Kafka manifests, OTel collector configs |
+| **Event Streaming & Schemas** | `spects.md` -> `ARCHITECTURE/wedding-inquiry-event-schema.md` -> `APPS/KAFKA/` | Salesforce Apex/LWC, GCP IAM policies |
+| **Caching & Transient State** | `spects.md` -> `APPS/REDIS/README.md` | Full Terraform state, Landing page mockups |
+| **Infrastructure & CI/CD** | `Agents.md` -> `PLATFORM/PROVIDERS/GCP/TERRAFORM/cloud-infrastructure-checklist.md` -> `PLATFORM/PROVIDERS/GCP/TERRAFORM/` | Salesforce sales stage details, Interview Q&A |
 | **Failure Injection / Debugging** | `AGENTS/SKILLS/TROUBLEMAKER/SKILL.md` -> `TROUBLESHOOTING/` | General architecture marketing summaries |
 | **Interview Prep & Practice** | `interview-cheat-sheet.md` -> `practice-lab.md` -> `QandAs.md` | Raw configuration lockfiles, Terraform plan files |
 

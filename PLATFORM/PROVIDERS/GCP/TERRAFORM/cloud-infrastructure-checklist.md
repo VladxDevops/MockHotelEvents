@@ -1,3 +1,31 @@
++++
+title = "Cloud Infrastructure Checklist for the Current Project"
+domain = "infrastructure"
+topics = ["terraform", "gcp", "infrastructure", "gitops"]
+difficulty = "advanced"
+progressive_tier = "Tier 3"
+parent = "DOCUMENTATION/INTERNAL/security.md"
+children = []
+related = [
+    "DOCUMENTATION/INTERNAL/spects.md",
+    "DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md",
+    "DOCUMENTATION/INTERNAL/security.md",
+    "APPS/REDIS/README.md"
+]
+updated_by = "AI Context Specialist"
+version = "1.0"
++++
+
+> **Parent**: [`security.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/security.md)  
+> **Related**: [`spects.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/spects.md) | [`architecture.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md) | [`security.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/security.md) | [`README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/APPS/REDIS/README.md)  
+> **Progressive Tier**: Tier 3
+
+<!-- AI RETRIEVAL HINTS:
+- Purpose: Documents Terraform and Google Cloud infrastructure needed to run the mock Hotel Events platform.
+- Questions Answered: What GCP and Terraform resources are needed, and how should environments be provisioned?
+- When to Retrieve: Working on infrastructure context for the Hotel Events wedding inquiry platform.
+- When NOT to Retrieve: Working on unrelated generated assets, dependency lockfiles, or implementation code that does not need documentation context.
+-->
 # Cloud Infrastructure Checklist for the Current Project
 
 This checklist summarizes the cloud infrastructure likely needed for the current mock hotel events project based on the architecture, messaging, observability, and integration patterns already documented.

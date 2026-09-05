@@ -1,6 +1,47 @@
++++
+title = "Changelog"
+domain = "project-ledger"
+topics = ["changelog", "project-ledger", "hotel-events"]
+difficulty = "intermediate"
+progressive_tier = "Tier 2"
+parent = "AI_MANIFEST.toml"
+children = []
+related = [
+    "DOCUMENTATION/INTERNAL/spects.md",
+    "DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md",
+    "DOCUMENTATION/INTERNAL/security.md",
+    "APPS/SALESFORCE/README.md",
+    "APPS/REDIS/README.md"
+]
+updated_by = "AI Context Specialist"
+version = "1.0"
++++
+
+> **Parent**: [`AI_MANIFEST.toml`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/AI_MANIFEST.toml)  
+> **Related**: [`spects.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/spects.md) | [`architecture.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md) | [`security.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/security.md) | [`README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/APPS/SALESFORCE/README.md)  
+> **Progressive Tier**: Tier 2
+
+<!-- AI RETRIEVAL HINTS:
+- Purpose: Provides internal project knowledge for the Hotel Events wedding inquiry architecture, interview readiness, and implementation planning.
+- Questions Answered: What internal knowledge should be loaded before deeper component work?
+- When to Retrieve: Working on project ledger context for the Hotel Events wedding inquiry platform.
+- When NOT to Retrieve: Working on unrelated generated assets, dependency lockfiles, or implementation code that does not need documentation context.
+-->
 # Changelog
 
 This project is intentionally a learning-by-doing repository for mock enterprise architecture and integration work.
+
+## [2026-09-04]
+### Updated
+- Applied Progressive Disclosure metadata, breadcrumbs, and AI retrieval hints across repository Markdown documentation while preserving existing technical content.
+- Added lightweight directory README indexes for Markdown-bearing documentation folders to support tiered context loading.
+- Added `APPS/KAFKA/README.md` as the Tier 3 Kafka documentation entry point.
+- Updated `AI_MANIFEST.toml` to version `1.1.0` and recorded the repository-wide documentation normalization scope.
+
+### Notes
+- Executable skill manifests under `AGENTS/SKILLS/**/SKILL.md` keep their YAML front matter so Codex skill loading remains intact.
+- Progressive Disclosure skill references were aligned to the current `APPS/...` and `PLATFORM/PROVIDERS/GCP/...` repository layout.
+- No documentation files were moved, deleted, split, or merged.
 
 ## [2026-09-03]
 ### Added

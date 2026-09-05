@@ -45,6 +45,9 @@ coverage/
 # Internal documentation exclusions
 DOCUMENTATION/INTERNAL/
 DOCUMENTATION/INTERNAL/**
+!DOCUMENTATION/INTERNAL/
+!DOCUMENTATION/INTERNAL/**/
+!DOCUMENTATION/INTERNAL/**/README.md
 
 # Optional project-local secrets
 *.pem

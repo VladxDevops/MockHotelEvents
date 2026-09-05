@@ -18,17 +18,17 @@ difficulty = "intermediate"
 parent = "DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md"
 children = []
 related = [
-    "SUBPROJECTS/Mulesoft/README.md",
-    "SUBPROJECTS/REDIS/README.md",
-    "PLATFORM/TERRAFORM/cloud-infrastructure-checklist.md"
+    "APPS/Mulesoft/README.md",
+    "APPS/REDIS/README.md",
+    "PLATFORM/PROVIDERS/GCP/TERRAFORM/cloud-infrastructure-checklist.md"
 ]
 updated_by = "AI Context Specialist"
 version = "1.0"
 +++
 
 > **Parent**: [`architecture.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md)  
-> **Related**: [`Mulesoft/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/SUBPROJECTS/Mulesoft/README.md) | [`REDIS/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/SUBPROJECTS/REDIS/README.md)  
-> **Infrastructure**: [`cloud-infrastructure-checklist.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/TERRAFORM/cloud-infrastructure-checklist.md)
+> **Related**: [`Mulesoft/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/APPS/Mulesoft/README.md) | [`REDIS/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/APPS/REDIS/README.md)  
+> **Infrastructure**: [`cloud-infrastructure-checklist.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/PROVIDERS/GCP/TERRAFORM/cloud-infrastructure-checklist.md)
 
 <!-- AI RETRIEVAL HINTS:
 - Purpose: Specifies Kafka topic partition strategies, event retention, and message contracts for wedding inquiries.
@@ -50,19 +50,19 @@ title = "GCP Cloud Memorystore (Redis) Terraform Module"
 domain = "infrastructure"
 topics = ["terraform", "gcp", "redis", "memorystore", "networking", "iac"]
 difficulty = "advanced"
-parent = "PLATFORM/TERRAFORM/cloud-infrastructure-checklist.md"
+parent = "PLATFORM/PROVIDERS/GCP/TERRAFORM/cloud-infrastructure-checklist.md"
 children = []
 related = [
-    "SUBPROJECTS/REDIS/README.md",
+    "APPS/REDIS/README.md",
     "DOCUMENTATION/INTERNAL/security.md"
 ]
 updated_by = "DevOps Platform Engineer"
 version = "1.0"
 +++
 
-> **Parent**: [`cloud-infrastructure-checklist.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/TERRAFORM/cloud-infrastructure-checklist.md)  
+> **Parent**: [`cloud-infrastructure-checklist.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/PROVIDERS/GCP/TERRAFORM/cloud-infrastructure-checklist.md)  
 > **Security Guardrail**: [`security.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/security.md)  
-> **Component Specs**: [`REDIS/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/SUBPROJECTS/REDIS/README.md)
+> **Component Specs**: [`REDIS/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/APPS/REDIS/README.md)
 
 <!-- AI RETRIEVAL HINTS:
 - Purpose: Provisions private Google Cloud Memorystore Redis instance with VPC peering for transient event caching.
@@ -88,8 +88,8 @@ parent = "DOCUMENTATION/INTERNAL/practice-lab.md"
 children = []
 related = [
     "AGENTS/SKILLS/TROUBLEMAKER/SKILL.md",
-    "SUBPROJECTS/KAFKA/README.md",
-    "PLATFORM/OBSERVABILITY/README.md"
+    "APPS/KAFKA/README.md",
+    "PLATFORM/PROVIDERS/GCP/OBSERVABILITY/README.md"
 ]
 updated_by = "SRE & Practice Lead"
 version = "1.0"
@@ -97,7 +97,7 @@ version = "1.0"
 
 > **Parent**: [`practice-lab.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/practice-lab.md)  
 > **Troublemaker Skill**: [`TROUBLEMAKER/SKILL.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/AGENTS/SKILLS/TROUBLEMAKER/SKILL.md)  
-> **Messaging Spec**: [`KAFKA/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/SUBPROJECTS/KAFKA/README.md)
+> **Messaging Spec**: [`KAFKA/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/APPS/KAFKA/README.md)
 
 <!-- AI RETRIEVAL HINTS:
 - Purpose: Hands-on lab exercise simulating Kafka consumer lag caused by slow downstream hotel billing checks.

@@ -50,7 +50,7 @@ These files govern system topography, cross-service interactions, data contracts
 - [`DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md): End-to-end integration topology and service boundaries.
 - [`DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture-overview.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture-overview.md): High-level architectural summary and component map.
 - [`DOCUMENTATION/INTERNAL/ARCHITECTURE/wedding-inquiry-event-schema.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/ARCHITECTURE/wedding-inquiry-event-schema.md): Authoritative Kafka and Pub/Sub message schemas.
-- [`PLATFORM/TERRAFORM/cloud-infrastructure-checklist.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/TERRAFORM/cloud-infrastructure-checklist.md): Infrastructure provisioning checklist across GCP services.
+- [`PLATFORM/PROVIDERS/GCP/TERRAFORM/cloud-infrastructure-checklist.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/PROVIDERS/GCP/TERRAFORM/cloud-infrastructure-checklist.md): Infrastructure provisioning checklist across GCP services.
 - [`DOCUMENTATION/INTERNAL/glossary.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/glossary.md): Project terminology, architectural terms, and domain models.
 - [`changelog.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/changelog.md) & [`transcripts.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/transcripts.md): Chronological ledger of durable architectural decisions.
 
@@ -58,12 +58,12 @@ These files govern system topography, cross-service interactions, data contracts
 
 ### Level 3: Subproject & Platform Implementation Guides (Localized)
 These files detail individual component configurations, API contracts, schemas, and modules:
-- **Salesforce Subproject:** [`SUBPROJECTS/SALESFORCE/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/SUBPROJECTS/SALESFORCE/README.md) (Lead qualification, custom fields, opportunities)
-- **MuleSoft Subproject:** [`SUBPROJECTS/Mulesoft/`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/SUBPROJECTS/Mulesoft/) (Experience, Process, and System API flows)
-- **Kafka Subproject:** [`SUBPROJECTS/KAFKA/`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/SUBPROJECTS/KAFKA/) (Topics, partition keys, Avro/JSON serialization)
-- **Redis Subproject:** [`SUBPROJECTS/REDIS/`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/SUBPROJECTS/REDIS/) (Key formatting, caching TTL, cache invalidation)
-- **Terraform Platform:** [`PLATFORM/TERRAFORM/`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/TERRAFORM/) (IaC modules, environment vars, remote state)
-- **Observability Platform:** [`PLATFORM/OBSERVABILITY/`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/OBSERVABILITY/) (OpenTelemetry collector, traces, GCP metrics)
+- **Salesforce Subproject:** [`APPS/SALESFORCE/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/APPS/SALESFORCE/README.md) (Lead qualification, custom fields, opportunities)
+- **MuleSoft Subproject:** [`APPS/Mulesoft/`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/APPS/Mulesoft/) (Experience, Process, and System API flows)
+- **Kafka Subproject:** [`APPS/KAFKA/`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/APPS/KAFKA/) (Topics, partition keys, Avro/JSON serialization)
+- **Redis Subproject:** [`APPS/REDIS/`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/APPS/REDIS/) (Key formatting, caching TTL, cache invalidation)
+- **Terraform Platform:** [`PLATFORM/PROVIDERS/GCP/TERRAFORM/`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/PROVIDERS/GCP/TERRAFORM/) (IaC modules, environment vars, remote state)
+- **Observability Platform:** [`PLATFORM/PROVIDERS/GCP/OBSERVABILITY/`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/PROVIDERS/GCP/OBSERVABILITY/) (OpenTelemetry collector, traces, GCP metrics)
 
 ---
 
@@ -94,26 +94,26 @@ AI agents must ingest documentation strictly according to the task at hand to ma
 ### A. Salesforce / CRM Lead Flow Task
 1. Load Level 1: [`Agents.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/Agents.md#L44-L50) (Customer & sales flow section)
 2. Load Level 1: [`DOCUMENTATION/INTERNAL/spects.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/spects.md) (Wedding inquiry requirements)
-3. Load Level 3: [`SUBPROJECTS/SALESFORCE/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/SUBPROJECTS/SALESFORCE/README.md) (Lead qualification fields)
+3. Load Level 3: [`APPS/SALESFORCE/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/APPS/SALESFORCE/README.md) (Lead qualification fields)
 *Do NOT load:* Terraform code, Kafka schemas, or Redis cache scripts.
 
 ### B. MuleSoft API & Integration Orchestration Task
 1. Load Level 1: [`DOCUMENTATION/INTERNAL/spects.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/spects.md)
 2. Load Level 2: [`DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md)
-3. Load Level 3: [`SUBPROJECTS/Mulesoft/`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/SUBPROJECTS/Mulesoft/) (API flows)
-4. Contextual lookup: [`SUBPROJECTS/REDIS/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/SUBPROJECTS/REDIS/README.md) (if availability caching is involved)
+3. Load Level 3: [`APPS/Mulesoft/`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/APPS/Mulesoft/) (API flows)
+4. Contextual lookup: [`APPS/REDIS/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/APPS/REDIS/README.md) (if availability caching is involved)
 *Do NOT load:* GCP IAM Terraform modules, Landing page mockups, or TROUBLEMAKER failure drills.
 
 ### C. Kafka / PubSub Event Contract Task
 1. Load Level 2: [`DOCUMENTATION/INTERNAL/ARCHITECTURE/wedding-inquiry-event-schema.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/ARCHITECTURE/wedding-inquiry-event-schema.md)
-2. Load Level 3: [`SUBPROJECTS/KAFKA/`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/SUBPROJECTS/KAFKA/)
+2. Load Level 3: [`APPS/KAFKA/`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/APPS/KAFKA/)
 3. Check Level 2: [`transcripts.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/transcripts.md) (Verify past schema decisions)
 *Do NOT load:* Salesforce UI layout docs, Terraform networking modules.
 
 ### D. Terraform Cloud Infrastructure Task
 1. Load Level 1: [`Agents.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/Agents.md#L66-L71) & [`DOCUMENTATION/INTERNAL/security.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/security.md)
-2. Load Level 2: [`PLATFORM/TERRAFORM/cloud-infrastructure-checklist.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/TERRAFORM/cloud-infrastructure-checklist.md)
-3. Load Level 3: Target module in [`PLATFORM/TERRAFORM/`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/TERRAFORM/)
+2. Load Level 2: [`PLATFORM/PROVIDERS/GCP/TERRAFORM/cloud-infrastructure-checklist.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/PROVIDERS/GCP/TERRAFORM/cloud-infrastructure-checklist.md)
+3. Load Level 3: Target module in [`PLATFORM/PROVIDERS/GCP/TERRAFORM/`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/PROVIDERS/GCP/TERRAFORM/)
 *Do NOT load:* Salesforce lead workflows, Interview Q&As, or Redis business payloads.
 
 ### E. Failure Injection & Troubleshooting Task
