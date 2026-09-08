@@ -193,6 +193,9 @@ Start here:
 - `DOCUMENTATION/INTERNAL/customer-landing-page.md` — conceptual landing page reference
 - `AGENTS/SKILLS/MAIN-PROJECT-SKILL/skill.md` — repository-local project skill
 - `AGENTS/SKILLS/PROGRESSIVE-DISCLOSURE-SKILL/SKILL.md` — progressive disclosure context engineering skill
+- `PLATFORM/PROVIDERS/GCP/README.md` — GCP infrastructure index
+- `PLATFORM/PROVIDERS/GCP/TERRAFORM/terragrunt.md` — Terragrunt multi-environment implementation
+- `PLATFORM/PROVIDERS/GCP/TERRAFORM/folder-structure.md` — Infrastructure folder organization and responsibilities
 
 ## Practice and interview prep
 Use the repo as a working lab, not only as a document set:

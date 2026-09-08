@@ -31,7 +31,43 @@ version = "1.0"
 
 Short project notes and major decisions for the Hotel Events Planning learning repository.
 
+## 2026-09-08 — Terragrunt multi-environment infrastructure framework
+- Documented Terragrunt installation and usage patterns for multi-environment GCP deployment
+- Created comprehensive folder structure documentation (`folder-structure.md`) showing:
+  - `live/` folder pattern for DEV, TEST, STAGING, PROD environments
+  - `modules/` folder for reusable Terraform components
+  - Root `terragrunt.hcl` for shared configuration inheritance
+  - Environment-specific `terragrunt.hcl` files for overrides and component deployment
+- Created agent guides for:
+  - `PLATFORM/PROVIDERS/GCP/` (infrastructure index)
+  - `PLATFORM/PROVIDERS/GCP/DEV/` (DEV environment context and governance)
+  - `PLATFORM/PROVIDERS/` (multi-cloud provider framework)
+- Updated `DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md` to include Terragrunt and multi-environment separation concepts
+- Updated changelog and transcripts to reflect infrastructure documentation milestone
+
+### Key decisions:
+- Documentation-only specification for folder structure (no IaC code generated yet)
+- DEV environment is the initial deployment target for proof of concept
+- Terragrunt configuration inheritance pattern selected for consistency and scalability
+- Four-environment model (DEV → TEST → STAGING → PROD) with progressive access controls
+
 ## 2026-09-04 — Repository-wide Progressive Disclosure normalization
+- Applied the local `AGENTS/SKILLS/PROGRESSIVE-DISCLOSURE-SKILL/` guidance to Markdown documentation across the repository.
+- Standardized non-executable documentation with TOML front matter, file-based breadcrumbs, progressive tier labels, and AI retrieval hints.
+- Created lightweight README indexes for documentation folders with Markdown content so agents can load local context progressively.
+- Added `APPS/KAFKA/README.md` as the current Kafka event-streaming documentation entry point and aligned manifest references to the actual app/platform layout.
+- Preserved executable `AGENTS/SKILLS/**/SKILL.md` YAML metadata to avoid breaking skill discovery.
+- No files were moved, deleted, split, or merged during this pass.
+
+## 2026-09-03 — Progressive Disclosure & Context Engineering System
+- Brought and adapted the Progressive Disclosure skill from the Bank project to `AGENTS/SKILLS/PROGRESSIVE-DISCLOSURE-SKILL/`.
+- Adapted the architecture domain from banking/zero-trust to the Hotel Events wedding inquiry journey (Salesforce -> MuleSoft -> Kafka/PubSub -> Redis -> GCP/Terraform -> OpenTelemetry).
+- Structured the repository knowledge into 4 Progressive Disclosure Tiers to prevent LLM context exhaustion.
+- Published companion guides for the 3-phase lifecycle: Phase 1 (Analysis), Phase 2 (Implementation), and Phase 3 (AI Knowledge Guardian).
+- Established `AI_MANIFEST.toml` as the canonical knowledge base control plane with health scoring and retrieval parameters.
+- Standardized TOML front matter, breadcrumbs, and AI retrieval hints for all internal documentation.
+
+## 2026-08-27 — Project direction
 - Applied the local `AGENTS/SKILLS/PROGRESSIVE-DISCLOSURE-SKILL/` guidance to Markdown documentation across the repository.
 - Standardized non-executable documentation with TOML front matter, file-based breadcrumbs, progressive tier labels, and AI retrieval hints.
 - Created lightweight README indexes for documentation folders with Markdown content so agents can load local context progressively.
