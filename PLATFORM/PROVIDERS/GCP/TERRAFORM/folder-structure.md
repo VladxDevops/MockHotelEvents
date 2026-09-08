@@ -397,6 +397,7 @@ Each folder should include a `README.md` documenting:
 - Example deployments
 - Troubleshooting or common issues
 
+
 ## Key principles
 
 1. **DRY (Don't Repeat Yourself)**: Shared config in root `terragrunt.hcl`, environment overrides in respective folders.
@@ -404,6 +405,7 @@ Each folder should include a `README.md` documenting:
 3. **Traceability**: Each file has a clear responsibility; logs and state paths are predictable.
 4. **Testability**: Modules and Terragrunt configs can be tested in DEV before promoting to higher environments.
 5. **Governance**: Environment folders encode access and approval rules at the folder level.
+
 
 ## Next steps
 

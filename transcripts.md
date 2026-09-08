@@ -31,6 +31,16 @@ version = "1.0"
 
 Short project notes and major decisions for the Hotel Events Planning learning repository.
 
+## 2026-09-08 — Redis client graceful shutdown design
+- Documented a signal-aware shutdown design for the Redis heartbeat client in `APPS/REDIS/docs/internal/graceful-shutdown.md`.
+- Identified that the current `cloud-run.yaml` declares an HTTP Cloud Run service while `container/app.py` does not listen on `PORT`; deployment must choose a Cloud Run job, a worker pool, or a real HTTP service before it can start correctly.
+- Established a bounded cleanup sequence: react to `SIGTERM`, stop new work, close Redis, flush only time-bounded telemetry, log completion, and exit before Cloud Run's forced termination window.
+
+### Key decisions:
+- Redis remains cache and transient state; graceful shutdown must never be required to preserve authoritative booking data.
+- The existing JSON-array Docker `CMD` form is retained because it lets the Python process receive container signals directly.
+- This pass is documentation-only; no runtime behavior or deployment manifest was changed.
+
 ## 2026-09-08 — Terragrunt multi-environment infrastructure framework
 - Documented Terragrunt installation and usage patterns for multi-environment GCP deployment
 - Created comprehensive folder structure documentation (`folder-structure.md`) showing:

@@ -33,6 +33,7 @@ This project is intentionally a learning-by-doing repository for mock enterprise
 
 ## [2026-09-08]
 ### Added
+- Added `APPS/REDIS/docs/internal/graceful-shutdown.md`, an internal implementation guide for signal-aware Redis client shutdown and the Cloud Run workload decision.
 - Created comprehensive Terragrunt multi-environment infrastructure documentation:
   - `PLATFORM/PROVIDERS/GCP/TERRAFORM/terragrunt.md` — Terragrunt implementation guide with installation and CI/CD usage patterns
   - `PLATFORM/PROVIDERS/GCP/TERRAFORM/folder-structure.md` — Exact folder layout and responsibility definitions for live, modules, and environment-specific configurations

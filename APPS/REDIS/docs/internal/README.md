@@ -5,7 +5,10 @@ topics = ["redis", "caching", "memorystore", "transient-state", "index"]
 difficulty = "intermediate"
 progressive_tier = "Tier 3"
 parent = "APPS/REDIS/README.md"
-children = ["APPS/REDIS/docs/internal/redis_internal.md"]
+children = [
+    "APPS/REDIS/docs/internal/redis_internal.md",
+    "APPS/REDIS/docs/internal/graceful-shutdown.md"
+]
 related = [
     "DOCUMENTATION/INTERNAL/spects.md",
     "DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md",
@@ -36,6 +39,7 @@ This directory index routes maintainers and AI agents to the local documentation
 | File | Tier | Primary Topic |
 | :--- | :---: | :--- |
 | `redis_internal.md` | Tier 3 | Redis Internal Architecture and Development |
+| `graceful-shutdown.md` | Tier 3 | Graceful shutdown design for the Redis client and Cloud Run |
 
 ## Dependencies & Upstream Services
 

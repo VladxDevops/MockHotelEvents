@@ -42,6 +42,7 @@ The PLATFORM/PROVIDERS folder organizes infrastructure-as-code and cloud provide
 | `AZURE/` | Reserved | Microsoft Azure provider (placeholder for future implementation) |
 | `ONPREM/` | Reserved | On-premises infrastructure (placeholder for future implementation) |
 
+
 ## GCP implementations
 
 The GCP provider folder contains the primary infrastructure implementation for Hotel Events:
@@ -64,17 +65,20 @@ The GCP provider folder contains the primary infrastructure implementation for H
 3. Reference `PLATFORM/PROVIDERS/GCP/TERRAFORM/terragrunt.md` for Terragrunt patterns
 4. Consult `PLATFORM/PROVIDERS/GCP/TERRAFORM/folder-structure.md` for folder responsibilities
 
+
 **For environment-specific work:**
 1. Start with the environment documentation (e.g., `GCP/DEV/README.md`)
 2. Review environment characteristics and constraints
 3. Reference the Terragrunt folder pattern from `folder-structure.md`
 4. Align with the GCP architecture checklist from `TERRAFORM/cloud-infrastructure-checklist.md`
 
+
 **For network, IAM, or observability work:**
 1. Identify the component name (network, iam, pubsub, redis, monitoring, cloudrun, gitops)
 2. Check if a module exists in `GCP/modules/{component}/`
 3. Reference the Terraform module documentation within that folder
 4. Consult `TERRAFORM/dev-environment-starter-architecture.md` for design context
+
 
 ## Related documentation
 
@@ -83,6 +87,7 @@ The GCP provider folder contains the primary infrastructure implementation for H
 - `DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md` — full architecture reference including Terragrunt context
 - `DOCUMENTATION/INTERNAL/security.md` — security and compliance patterns
 
+
 ### Terraform and Terragrunt
 - `PLATFORM/PROVIDERS/GCP/TERRAFORM/README.md` — Terraform overview and index
 - `PLATFORM/PROVIDERS/GCP/TERRAFORM/terragrunt.md` — Terragrunt guide with installation and CI/CD patterns
@@ -90,8 +95,10 @@ The GCP provider folder contains the primary infrastructure implementation for H
 - `PLATFORM/PROVIDERS/GCP/TERRAFORM/cloud-infrastructure-checklist.md` — infrastructure components and checklist
 - `PLATFORM/PROVIDERS/GCP/TERRAFORM/dev-environment-starter-architecture.md` — DEV environment starter architecture
 
+
 ### Environment context
 - `PLATFORM/PROVIDERS/GCP/DEV/README.md` — DEV environment characteristics, governance, and deployment guidance
+
 
 ## Terragrunt and multi-environment context
 
@@ -102,6 +109,7 @@ Terragrunt wraps Terraform to manage consistent configurations across DEV, TEST,
 - Consistent remote state management
 - Cleaner CI/CD and promotion workflows
 - Clear separation of concerns between environment and components
+
 
 ### Folder structure pattern
 The Terragrunt structure mirrors this layout:
@@ -133,11 +141,13 @@ modules/                  (reusable Terraform modules)
   gitops/
 ```
 
+
 ### Configuration inheritance
 Each level can inherit and override values from above:
 - Root `terragrunt.hcl` defines project, region, provider defaults
 - `{env}/terragrunt.hcl` overrides with environment-specific values
 - `{env}/{component}/terragrunt.hcl` specifies which module to deploy and with what inputs
+
 
 ## Agent workflows
 
@@ -147,12 +157,14 @@ Each level can inherit and override values from above:
 3. Review `PLATFORM/PROVIDERS/GCP/TERRAFORM/dev-environment-starter-architecture.md` for DEV environment design
 4. Use `PLATFORM/PROVIDERS/GCP/TERRAFORM/folder-structure.md` to determine where to place Terragrunt and Terraform code
 
+
 ### Extending existing infrastructure
 1. Review the existing component in `GCP/modules/{component}/`
 2. Check the corresponding Terragrunt deployment in `GCP/live/dev/{component}/`
 3. Modify the module or Terragrunt config as needed
 4. Test changes in DEV first
 5. Promote to higher environments following the folder and promotion pattern
+
 
 ### Creating a new environment (TEST, STAGING, PROD)
 1. Copy the DEV folder structure to the new environment folder
@@ -165,12 +177,14 @@ Each level can inherit and override values from above:
 3. Create `{env}/README.md` documenting environment characteristics
 4. Follow the promotion workflow with CI/CD validation
 
+
 ### Troubleshooting infrastructure issues
 1. Check the environment documentation: `GCP/{env}/README.md`
 2. Review the Terragrunt folder structure: `PLATFORM/PROVIDERS/GCP/TERRAFORM/folder-structure.md`
 3. Consult the specific module documentation: `GCP/modules/{component}/README.md`
 4. Reference the architecture documentation for design decisions
 5. Check logs and observability setup: `GCP/OBSERVABILITY/`
+
 
 ## Best practices
 
@@ -180,10 +194,12 @@ Always document infrastructure decisions in README files co-located with the cod
 - `GCP/live/{env}/README.md` for environment characteristics
 - `TERRAFORM/` folder for architecture and decision documentation
 
+
 ### Terraform module conventions
 - One responsibility per module (network, iam, messaging, cache, etc.)
 - Inputs for configuration, outputs for downstream consumption
 - No hardcoded environment values; use inputs for flexibility
+
 
 ### Terragrunt conventions
 - Inherit from root `terragrunt.hcl` to minimize repetition
@@ -191,12 +207,14 @@ Always document infrastructure decisions in README files co-located with the cod
 - Use `dependency` blocks to express component ordering
 - Leverage `run_all` for coordinated multi-component deployment
 
+
 ### Security and compliance
 - Least-privilege IAM by default
 - Secret management via GCP Secret Manager (not in Git)
 - Encryption for data in transit and at rest
 - Audit trails for infrastructure changes
 - Regular security reviews per environment
+
 
 ## Next steps for agents
 
