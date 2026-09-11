@@ -25,6 +25,8 @@ node_modules/
 .terraform/
 *.tfstate
 *.tfstate.*
+*.tfvars
+*.tfvars.json
 crash.log
 *.tfplan
 .override.tf

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="mock-hotel-events">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1725000000000</CreatedAt>
+    <Description>Mock Hotel Events API proxy for health check and wedding inquiries</Description>
+    <DisplayName>mock-hotel-events</DisplayName>
+    <LastModifiedAt>1725000000000</LastModifiedAt>
+    <Policies>
+        <Policy>AM-HealthCheckResponse</Policy>
+        <Policy>AM-InquiryResponse</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+</APIProxy>

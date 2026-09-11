@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AM-InquiryResponse">
+    <DisplayName>AM-InquiryResponse</DisplayName>
+    <Set>
+        <Headers>
+            <Header name="Content-Type">application/json</Header>
+        </Headers>
+        <Payload contentType="application/json">{
+  "status": "SUCCESS",
+  "endpoint": "/events/inquiries",
+  "service": "hotel-events-wedding-service",
+  "message": "Hotel Events wedding inquiry API active",
+  "data": {
+    "supported_event_types": ["wedding", "banquet", "conference", "reception"],
+    "lead_capture_status": "ready",
+    "integration_source": "salesforce"
+  },
+  "timestamp": "{system.time}"
+}</Payload>
+        <StatusCode>200</StatusCode>
+        <ReasonPhrase>OK</ReasonPhrase>
+    </Set>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

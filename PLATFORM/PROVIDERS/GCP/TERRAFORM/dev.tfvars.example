@@ -1,0 +1,34 @@
+# ==============================================================================
+# Apigee X (Evaluation) - Example Development Variables (dev.tfvars.example)
+# Copy this file to dev.tfvars and fill in your GCP project and billing details.
+# ==============================================================================
+
+# Project Configuration
+# Set create_project = true to provision a brand-new project from scratch.
+# If create_project = false, provide an existing project_id with billing already linked.
+create_project  = false
+project_id      = "hotel-events-dev-project"
+project_name    = "Hotel Events Dev"
+billing_account = "XXXXXX-XXXXXX-XXXXXX" # Required if create_project = true
+org_id          = ""                     # e.g. "123456789012" (optional)
+folder_id       = ""                     # e.g. "987654321098" (optional)
+
+# Region and Networking
+region                  = "us-central1"
+apigee_analytics_region = "us-central1"
+network_name            = "apigee-vpc"
+subnet_name             = "apigee-subnet"
+subnet_cidr_range       = "10.100.0.0/24"
+proxy_subnet_name       = "apigee-proxy-only-subnet"
+proxy_subnet_cidr_range = "10.100.1.0/24"
+peering_cidr_range      = "10.0.0.0/22"
+
+# Apigee Runtime & Environment
+apigee_instance_name        = "hotel-events-dev-instance"
+apigee_instance_description = "Development Apigee runtime for the hotel events platform."
+apigee_env_name             = "dev"
+apigee_envgroup_name        = "dev-env-group"
+apigee_envgroup_hostnames   = ["events-dev.example.com"]
+
+# Sample Proxy Deployment
+deploy_sample_proxy = false

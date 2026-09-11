@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description>Default Proxy Endpoint for Hotel Events Mock API</Description>
+    <FaultRules/>
+    <PreFlow name="PreFlow">
+        <Request/>
+        <Response/>
+    </PreFlow>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <Flows>
+        <Flow name="healthz">
+            <Description>Health check endpoint</Description>
+            <Request/>
+            <Response>
+                <Step>
+                    <Name>AM-HealthCheckResponse</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/healthz") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="inquiries">
+            <Description>Wedding inquiry mock endpoint</Description>
+            <Request/>
+            <Response>
+                <Step>
+                    <Name>AM-InquiryResponse</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/events/inquiries")</Condition>
+        </Flow>
+    </Flows>
+    <HTTPProxyConnection>
+        <BasePath>/v1</BasePath>
+        <Properties/>
+        <VirtualHost>default</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="mock-health">
+        <Condition>(proxy.pathsuffix MatchesPath "/healthz") or (proxy.pathsuffix MatchesPath "/events/inquiries")</Condition>
+    </RouteRule>
+    <RouteRule name="noroute"/>
+</ProxyEndpoint>

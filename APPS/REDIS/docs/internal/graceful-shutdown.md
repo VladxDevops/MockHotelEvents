@@ -61,6 +61,7 @@ For this Redis heartbeat client, the cleanup is deliberately small:
 
 It must **not** use shutdown to write business-critical booking data to Redis. In this project Redis is a cache and transient-state layer, not the source of truth. Any durable booking or message-processing result must already have been committed to its authoritative system before shutdown begins.
 
+
 ## Why it matters in this repository
 
 The current client has an infinite `while True` loop and calls `time.sleep(10)`. It does not register a signal handler, does not close `r`, and does not log a normal termination path. Locally, `docker compose down` normally sends `SIGTERM`; Cloud Run sends the same signal when it shuts down an instance.
@@ -72,6 +73,7 @@ CMD ["/opt/venv/bin/python", "/app/app.py"]
 ```
 
 This is a good foundation because Python is PID 1, the process that receives the container signal directly. Do not change it to shell form such as `CMD python /app/app.py`; a shell can prevent the child Python process from receiving the signal reliably.
+
 
 ## Important: the current Cloud Run template cannot start as a service
 
@@ -86,6 +88,7 @@ This is separate from graceful shutdown, but it must be resolved before the YAML
 | Continuously pull tasks from Kafka or another queue | **Worker pool** | Poll work, stop fetching new work on `SIGTERM`, finish bounded in-flight work, then close resources. |
 
 The current loop is only a heartbeat smoke test, not a user-facing HTTP API or a useful continuous worker. The simplest operational design is a **Cloud Run job** that runs `PING` and exits, scheduled separately if periodic validation is required. If the near-term goal is to learn request handling, turn it into a small HTTP service instead. Do not deploy the existing loop as a Cloud Run service merely to keep a Redis connection alive.
+
 
 ## Cloud Run shutdown behavior and the time budget
 
@@ -102,6 +105,7 @@ Recommended timing policy:
 | Redis socket connect/read timeout | 1-2 seconds | Prevents cleanup or normal work from hanging on an unavailable dependency. |
 | Shutdown attempts | 1 | Retrying long cleanup is less valuable than exiting predictably. |
 | Separate forced-exit watchdog | No, while cleanup stays bounded | The example has no unbounded cleanup work; add a deadline-aware watchdog before adding any slow cleanup. |
+
 
 ## Recommended implementation for the current heartbeat client
 
@@ -180,6 +184,7 @@ if __name__ == "__main__":
     raise SystemExit(main())
 ```
 
+
 ### Why each part exists
 
 - `threading.Event` is a shared, thread-safe stop flag. It is safer than trying to do network cleanup inside the signal handler itself.
@@ -191,6 +196,7 @@ if __name__ == "__main__":
 - `raise SystemExit(main())` makes the intended exit code explicit: `0` for a planned shutdown and `1` for a Redis failure.
 
 The example does not add a second watchdog timer because every operation it performs is already bounded. If future cleanup adds telemetry, database transactions, or message acknowledgements, run them through a deadline-aware helper and stop attempting cleanup once 5 seconds have elapsed.
+
 
 ## If this becomes an HTTP Cloud Run service
 
@@ -209,6 +215,7 @@ CMD ["/opt/venv/bin/uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
 ```
 
 In practice, use a small launcher or Uvicorn configuration that reads `PORT` instead of hard-coding `8080`. This example only illustrates the required server shape. The current `requirements.txt` does not include FastAPI or Uvicorn, so this is a future service conversion, not a drop-in change.
+
 
 ## If this becomes a Cloud Run job
 
