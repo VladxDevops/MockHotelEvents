@@ -8,16 +8,18 @@ parent = "PLATFORM/PROVIDERS/GCP/README.md"
 children = []
 related = [
     "PLATFORM/PROVIDERS/GCP/README.md",
+    "PLATFORM/PROVIDERS/GCP/TERRAFORM/README.md",
     "PLATFORM/PROVIDERS/GCP/TERRAFORM/terragrunt.md",
     "PLATFORM/PROVIDERS/GCP/TERRAFORM/dev-environment-starter-architecture.md",
+    "APPS/APIgee/README.md",
     "DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md"
 ]
 updated_by = "AI Context Specialist"
-version = "1.0"
+version = "1.1"
 +++
 
 > **Parent**: [`PLATFORM/PROVIDERS/GCP/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/PROVIDERS/GCP/README.md)  
-> **Related**: [`TERRAFORM/terragrunt.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/PROVIDERS/GCP/TERRAFORM/terragrunt.md) | [`TERRAFORM/dev-environment-starter-architecture.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/PROVIDERS/GCP/TERRAFORM/dev-environment-starter-architecture.md) | [`ARCHITECTURE/architecture.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md)  
+> **Related**: [`TERRAFORM/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/PROVIDERS/GCP/TERRAFORM/README.md) | [`TERRAFORM/terragrunt.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/PROVIDERS/GCP/TERRAFORM/terragrunt.md) | [`APPS/APIgee/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/APPS/APIgee/README.md) | [`ARCHITECTURE/architecture.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md)  
 > **Progressive Tier**: Tier 3
 
 # DEV Environment Guide
@@ -55,10 +57,19 @@ The DEV environment is not production-grade. It prioritizes developer experience
 The DEV environment includes:
 
 ### Network
-- Single VPC in `us-central1`
-- Application and data subnets
+- Custom VPC (`apigee-vpc`) in `us-central1`
+- Application compute subnet (`apigee-subnet`, `10.100.0.0/24`) with Private Google Access
+- Regional Envoy proxy-only subnet (`apigee-proxy-only-subnet`, `10.100.1.0/24`, `REGIONAL_MANAGED_PROXY`)
+- Private Service Access (PSA) reserved `/22` peering block for Apigee runtime
 - Basic firewall rules with developer access
-- Private service access for managed services
+
+### API Gateway & Management (Apigee X Evaluation)
+- Apigee Organization (`billing_type = "EVALUATION"`, runtime `CLOUD`, CMEK-free)
+- Apigee Instance in `us-central1` attached to `/22` peering range
+- Environment `dev` attached to Environment Group `dev-env-group`
+- Private Service Connect (PSC) NEG connected to Global External Application Load Balancer
+- Dual frontends: HTTP (Port 80) for testing and HTTPS (Port 443 with self-signed certificate)
+- Sample mock hotel events proxy (`/v1/healthz`, `/v1/events/inquiries`) with automated deployment script (`deploy-proxy.sh`) and smoke tester (`test-apigee.sh`)
 
 ### Identity and Access Management
 - Service accounts for each application component

@@ -6,6 +6,7 @@ name = "Hotel Events Planning"
 purpose = "Mock enterprise event-driven hospitality platform modeling a customer wedding inquiry journey from Salesforce CRM to MuleSoft integration, Pub/Sub & Kafka event streaming, Redis caching, and GCP/Terraform cloud infrastructure."
 primary_technologies = [
     "Salesforce",
+    "Apigee X",
     "MuleSoft",
     "Apache Kafka",
     "Google Cloud Pub/Sub",
@@ -52,10 +53,11 @@ internal_index = "DOCUMENTATION/INTERNAL/spects.md"
 system_architecture = "DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md"
 security_directive = "DOCUMENTATION/INTERNAL/security.md"
 salesforce_subproject = "APPS/SALESFORCE/README.md"
+apigee_subproject = "APPS/APIgee/README.md"
 mulesoft_subproject = "APPS/Mulesoft/README.md"
 kafka_subproject = "APPS/KAFKA/README.md"
 redis_subproject = "APPS/REDIS/README.md"
-terraform_platform = "PLATFORM/PROVIDERS/GCP/TERRAFORM/cloud-infrastructure-checklist.md"
+terraform_platform = "PLATFORM/PROVIDERS/GCP/TERRAFORM/README.md"
 skills_registry = "AGENTS/SKILLS/MAIN-PROJECT-SKILL/skill.md"
 progressive_disclosure_skill = "AGENTS/SKILLS/PROGRESSIVE-DISCLOSURE-SKILL/SKILL.md"
 
@@ -82,7 +84,7 @@ ai_readiness = "Production-Ready"
 maintainability_score = 96
 navigation_score = 99
 token_efficiency_rating = "Optimal"
-last_validation_timestamp = "2026-09-04T00:00:00Z"
+last_validation_timestamp = "2026-09-11T00:00:00Z"
 last_ai_review_by = "AI Knowledge Engineering Guardian (Antigravity CLI)"
 known_issues = []
 future_improvements = [

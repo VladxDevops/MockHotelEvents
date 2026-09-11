@@ -11,7 +11,9 @@ related = [
     "DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md",
     "DOCUMENTATION/INTERNAL/security.md",
     "APPS/SALESFORCE/README.md",
-    "APPS/REDIS/README.md"
+    "APPS/REDIS/README.md",
+    "APPS/APIgee/README.md",
+    "PLATFORM/PROVIDERS/GCP/TERRAFORM/README.md"
 ]
 updated_by = "AI Context Specialist"
 version = "1.0"
@@ -58,6 +60,7 @@ The project should reflect a scenario where a hotel can:
 ## Core technology stack
 The stack for this project includes:
 - Salesforce for CRM, leads, opportunities, and customer relationship management
+- Apigee X for API gateway management, rate limiting, and Northbound ingress routing
 - Mulesoft for integration orchestration and API connectivity
 - Pub/Sub for asynchronous event-driven messaging in GCP
 - Kafka for event streaming and distributed processing patterns
@@ -75,7 +78,8 @@ The solution should follow enterprise-grade architecture patterns suitable for a
 - Opportunity or event request data is passed into integration layers.
 - Availability and event requirements are validated against hotel resources.
 
-### 2. Integration layer
+### 2. API gateway and integration layer
+- Apigee X serves as the Northbound API gateway, enforcing authentication, quotas, Spike Arrest, and routing.
 - Mulesoft should orchestrate business flows between CRM and internal systems.
 - APIs should be defined for event inquiry, availability, venue check, quote generation, and booking confirmation.
 - Data transformations should be explicit and documented.
@@ -189,11 +193,13 @@ Start here:
 - `DOCUMENTATION/INTERNAL/interview-cheat-sheet.md` — quick interview-ready summary
 - `DOCUMENTATION/INTERNAL/glossary.md` — key concepts and terminology
 - `DOCUMENTATION/INTERNAL/roadmap.md` — learning roadmap and next steps
-- `SUBPROJECTS/SALESFORCE/README.md` — Salesforce context and workflow
+- `APPS/SALESFORCE/README.md` — Salesforce context and workflow
+- `APPS/APIgee/README.md` — Apigee API gateway architecture and management index
 - `DOCUMENTATION/INTERNAL/customer-landing-page.md` — conceptual landing page reference
 - `AGENTS/SKILLS/MAIN-PROJECT-SKILL/skill.md` — repository-local project skill
 - `AGENTS/SKILLS/PROGRESSIVE-DISCLOSURE-SKILL/SKILL.md` — progressive disclosure context engineering skill
 - `PLATFORM/PROVIDERS/GCP/README.md` — GCP infrastructure index
+- `PLATFORM/PROVIDERS/GCP/TERRAFORM/README.md` — Apigee X Terraform infrastructure and deployment index
 - `PLATFORM/PROVIDERS/GCP/TERRAFORM/terragrunt.md` — Terragrunt multi-environment implementation
 - `PLATFORM/PROVIDERS/GCP/TERRAFORM/folder-structure.md` — Infrastructure folder organization and responsibilities
 

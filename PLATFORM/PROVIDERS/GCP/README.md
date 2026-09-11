@@ -29,20 +29,20 @@ This directory index routes maintainers and AI agents to platform infrastructure
 
 | Folder | Purpose |
 | :--- | :--- |
-| `TERRAFORM/` | Terraform modules, Terragrunt configuration, and infrastructure documentation |
-| `DEV/` | DEV environment infrastructure context and configuration |
+| `TERRAFORM/` | Apigee X Evaluation Terraform codebase, reusable modules, Terragrunt config, and IaC documentation |
+| `DEV/` | DEV environment infrastructure context, variable configurations, and Apigee deployment guidance |
 | `INFRASTRUCTURE/` | Generated or runtime infrastructure artifacts |
 | `OBSERVABILITY/` | Monitoring, logging, and observability configuration |
 | `SECURITY/` | Security policies, access controls, and compliance documentation |
 
 ## Key documentation entry points
 
-- `TERRAFORM/README.md` — Terraform and Terragrunt overview
+- `TERRAFORM/README.md` — Apigee X Evaluation architecture, Terraform deployment, and Terragrunt overview
 - `TERRAFORM/terragrunt.md` — Multi-environment Terragrunt implementation guide
 - `TERRAFORM/folder-structure.md` — Exact folder layout and responsibility definitions
 - `TERRAFORM/cloud-infrastructure-checklist.md` — Full infrastructure checklist
 - `TERRAFORM/dev-environment-starter-architecture.md` — DEV environment starter plan
-- `DEV/README.md` — DEV environment context (to be created)
+- `DEV/README.md` — DEV environment context, characteristics, and deployment guidance
 
 ## Recommended reading order
 

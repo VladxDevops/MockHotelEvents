@@ -97,3 +97,7 @@ What is tenant configuration and tenant data?
 What is DLQ handling?
 What is white-label managed platform? 
 What options there are in regards to CRMs? Does salesfoce offer a free account or test/try account? What do we need to start using salesforce or what other CRM has free or open source access? 
+
+
+What is: 
+API gateway management, rate limiting, Spike Arrest, routing and Northbound ingress routing?

@@ -1,3 +1,33 @@
++++
+title = "Apigee Architecture Summary"
+domain = "api-management"
+topics = ["apigee", "api-gateway", "northbound", "orchestration", "security"]
+difficulty = "intermediate"
+progressive_tier = "Tier 3"
+parent = "APPS/APIgee/README.md"
+children = []
+related = [
+    "DOCUMENTATION/INTERNAL/spects.md",
+    "DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md",
+    "DOCUMENTATION/INTERNAL/security.md",
+    "PLATFORM/PROVIDERS/GCP/TERRAFORM/README.md",
+    "APPS/APIgee/README.md"
+]
+updated_by = "AI Context Specialist"
+version = "1.0"
++++
+
+> **Parent**: [`README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/APPS/APIgee/README.md)  
+> **Related**: [`spects.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/spects.md) | [`architecture.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md) | [`security.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/security.md) | [`README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/PROVIDERS/GCP/TERRAFORM/README.md)  
+> **Progressive Tier**: Tier 3
+
+<!-- AI RETRIEVAL HINTS:
+- Purpose: Explains Apigee X architecture, positioning as Northbound API gateway, policy enforcement, and comparison to MuleSoft.
+- Questions Answered: How does Apigee fit into the Hotel Events platform, and what policies/endpoints does it manage?
+- When to Retrieve: Working on API management, gateway routing, security policies, or Apigee architecture context.
+- When NOT to Retrieve: Working on internal Kafka event streaming or low-level Redis caching implementation details.
+-->
+
 # Apigee-based architecture for the hotel events platform
 
 ## Business context
