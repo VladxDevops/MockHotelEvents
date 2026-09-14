@@ -5,13 +5,13 @@
 
 # Project Configuration
 # Set create_project = true to provision a brand-new project from scratch.
-# If create_project = false, provide an existing project_id with billing already linked.
-create_project  = false
-project_id      = "hotel-events-dev-project"
-project_name    = "Hotel Events Dev"
-billing_account = "XXXXXX-XXXXXX-XXXXXX" # Required if create_project = true
-org_id          = ""                     # e.g. "123456789012" (optional)
-folder_id       = ""                     # e.g. "987654321098" (optional)
+# If create_project = false, provide an existing compute_project_id with billing already linked.
+create_project       = false
+compute_project_id   = "hotel-events-dev-project"
+compute_project_name = "Hotel Events Dev"
+billing_account      = "XXXXXX-XXXXXX-XXXXXX" # Required if create_project = true
+org_id               = ""                     # e.g. "123456789012" (optional)
+folder_id            = ""                     # e.g. "987654321098" (optional)
 
 # Region and Networking
 region                  = "us-central1"

@@ -71,10 +71,22 @@ The DEV environment includes:
 - Sample mock hotel events proxy (`/v1/healthz`, `/v1/events/inquiries`) with automated deployment script (`deploy-proxy.sh`) and smoke tester (`test-apigee.sh`)
 
 ### Identity and Access Management
-- Service accounts for each application component
-- Developer service accounts with broad local permissions
-- Local IAM bindings (not organizational policies)
-- Minimal cross-environment access restrictions
+
+> Planned inventory: 5 runtime service accounts for the initial DEV environment.
+
+Each DEV service uses a dedicated service account:
+- `hotel-events-dev-inquiry-sa`
+- `hotel-events-dev-availability-sa`
+- `hotel-events-dev-pricing-sa`
+- `hotel-events-dev-booking-sa`
+- `hotel-events-dev-operations-sa`
+
+Initial least-privilege role plan:
+- `hotel-events-dev-inquiry-sa`: `roles/logging.logWriter`, `roles/monitoring.metricWriter`, `roles/pubsub.publisher`
+- `hotel-events-dev-availability-sa`: `roles/pubsub.publisher`, `roles/pubsub.subscriber`, `roles/logging.logWriter`, `roles/monitoring.metricWriter`
+- `hotel-events-dev-pricing-sa`: `roles/pubsub.publisher`, `roles/pubsub.subscriber`, `roles/logging.logWriter`, `roles/monitoring.metricWriter`
+- `hotel-events-dev-booking-sa`: `roles/pubsub.publisher`, `roles/pubsub.subscriber`, `roles/logging.logWriter`, `roles/monitoring.metricWriter`
+- `hotel-events-dev-operations-sa`: `roles/pubsub.publisher`, `roles/logging.logWriter`, `roles/monitoring.metricWriter`, `roles/cloudtrace.agent`
 
 ### Messaging
 - Pub/Sub topics for core event types
@@ -151,12 +163,22 @@ terragrunt apply
 ## Access and authentication
 
 ### Service accounts
-Each DEV service uses a dedicated service account:
-- `hotel-events-dev-inquiry`
-- `hotel-events-dev-availability`
-- `hotel-events-dev-pricing`
-- `hotel-events-dev-booking`
 
+> Planned inventory: 5 runtime service accounts for the initial DEV environment.
+
+Each DEV service uses a dedicated service account:
+- `hotel-events-dev-inquiry-sa`
+- `hotel-events-dev-availability-sa`
+- `hotel-events-dev-pricing-sa`
+- `hotel-events-dev-booking-sa`
+- `hotel-events-dev-operations-sa`
+
+Initial least-privilege role plan:
+- `hotel-events-dev-inquiry-sa`: `roles/logging.logWriter`, `roles/monitoring.metricWriter`, `roles/pubsub.publisher`
+- `hotel-events-dev-availability-sa`: `roles/pubsub.publisher`, `roles/pubsub.subscriber`, `roles/logging.logWriter`, `roles/monitoring.metricWriter`
+- `hotel-events-dev-pricing-sa`: `roles/pubsub.publisher`, `roles/pubsub.subscriber`, `roles/logging.logWriter`, `roles/monitoring.metricWriter`
+- `hotel-events-dev-booking-sa`: `roles/pubsub.publisher`, `roles/pubsub.subscriber`, `roles/logging.logWriter`, `roles/monitoring.metricWriter`
+- `hotel-events-dev-operations-sa`: `roles/pubsub.publisher`, `roles/logging.logWriter`, `roles/monitoring.metricWriter`, `roles/cloudtrace.agent`
 
 ### Local developer access
 Developers use their Google Cloud identity or a shared DEV service account with:
@@ -168,11 +190,15 @@ Developers use their Google Cloud identity or a shared DEV service account with:
 
 
 ### Secret management
-DEV secrets are stored in GCP Secret Manager:
+DEV secrets are stored in GCP Secret Manager using placeholder values for the initial project bootstrap:
 - `hotel-events-dev-salesforce-api-key`
-- `hotel-events-dev-mulesoft-credentials`
+- `hotel-events-dev-salesforce-client-secret`
+- `hotel-events-dev-mulesoft-client-id`
+- `hotel-events-dev-mulesoft-client-secret`
+- `hotel-events-dev-redis-password`
 - `hotel-events-dev-database-password`
-- Other integration credentials
+
+This is the first-pass inventory. The actual secrets should be rotated and replaced once the project is live and the operational owners are confirmed.
 
 ## Cost management
 
@@ -231,4 +257,23 @@ gcloud redis instances delete hotel-events-dev-cache --project hotel-events-dev
 4. Set up CI/CD pipelines to deploy DEV automatically
 5. Create TEST environment following the same pattern
 6. Promote validated patterns to STAGING and PROD
+
+### Terraform service account declaration standard
+
+The DEV Terraform bootstrap will declare service account IAM bindings using the following pattern:
+
+```hcl
+member = "serviceAccount:service-${var.inquiry_service_account_id}@${var.compute_project_id}.iam.gserviceaccount.com"
+```
+
+This keeps the runtime service account IDs configurable via `dev.tfvars`, while still producing the correct Google-managed service account email string for each project-scoped IAM binding.
+
+The same pattern is used for all explicit role assignments for:
+- `hotel-events-dev-inquiry-sa`
+- `hotel-events-dev-availability-sa`
+- `hotel-events-dev-pricing-sa`
+- `hotel-events-dev-booking-sa`
+- `hotel-events-dev-operations-sa`
+
+> Note: The repo intentionally preserves the full change history in `changelog.md`. New notes are appended without deleting earlier entries, and the current standard is documented here as the canonical pattern for all project-scoped service account bindings.
 

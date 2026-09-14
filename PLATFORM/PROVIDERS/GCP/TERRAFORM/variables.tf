@@ -6,19 +6,15 @@
 # Project Creation & Identification
 # ------------------------------------------------------------------------------
 
-variable "create_project" {
-  description = "Whether to create a new GCP project. If false, an existing project identified by var.project_id is used."
-  type        = bool
-  default     = false
-}
 
-variable "project_id" {
-  description = "GCP Project ID. Must be globally unique if create_project = true, or specify the existing project ID."
+
+variable "compute_project_id" {
+  description = "GCP compute project ID. Must be globally unique if create_project = true, or specify the existing project ID."
   type        = string
 }
 
-variable "project_name" {
-  description = "Display name of the GCP project when create_project = true."
+variable "compute_project_name" {
+  description = "Display name of the GCP compute project when create_project = true."
   type        = string
   default     = "Hotel Events Dev"
 }
@@ -130,6 +126,94 @@ variable "apigee_envgroup_hostnames" {
   description = "List of hostnames bound to the Apigee environment group for routing incoming requests."
   type        = list(string)
   default     = ["events-dev.example.com"]
+}
+
+# ------------------------------------------------------------------------------
+# DEV Service Accounts, IAM, and Secrets
+# ------------------------------------------------------------------------------
+
+variable "dev_service_account_ids" {
+  description = "List of runtime service account IDs used by the DEV environment. Kept explicit so the first deployment in a newly created project has a deterministic baseline."
+  type        = list(string)
+  default = [
+    "hotel-events-dev-inquiry-sa",
+    "hotel-events-dev-availability-sa",
+    "hotel-events-dev-pricing-sa",
+    "hotel-events-dev-booking-sa",
+    "hotel-events-dev-operations-sa"
+  ]
+}
+
+variable "inquiry_service_account_id" {
+  description = "Service account ID for the inquiry workload in the DEV environment."
+  type        = string
+  default     = "he-dev-inquiry"
+}
+
+variable "availability_service_account_id" {
+  description = "Service account ID for the availability workload in the DEV environment."
+  type        = string
+  default     = "he-dev-availability"
+}
+
+variable "pricing_service_account_id" {
+  description = "Service account ID for the pricing workload in the DEV environment."
+  type        = string
+  default     = "he-dev-pricing"
+}
+
+variable "booking_service_account_id" {
+  description = "Service account ID for the booking workload in the DEV environment."
+  type        = string
+  default     = "he-dev-booking"
+}
+
+variable "operations_service_account_id" {
+  description = "Service account ID for the operations workload in the DEV environment."
+  type        = string
+  default     = "he-dev-operations"
+}
+
+variable "salesforce_api_key" {
+  description = "Placeholder Salesforce API key for the DEV environment. Replace with a real secret before non-demo use."
+  type        = string
+  default     = "PLACEHOLDER_SALESFORCE_API_KEY"
+  sensitive   = true
+}
+
+variable "salesforce_client_secret" {
+  description = "Placeholder Salesforce client secret for the DEV environment. Replace with a real secret before non-demo use."
+  type        = string
+  default     = "PLACEHOLDER_SALESFORCE_CLIENT_SECRET"
+  sensitive   = true
+}
+
+variable "mulesoft_client_id" {
+  description = "Placeholder Mulesoft client ID for the DEV environment. Replace with a real secret before non-demo use."
+  type        = string
+  default     = "PLACEHOLDER_MULESOFT_CLIENT_ID"
+  sensitive   = true
+}
+
+variable "mulesoft_client_secret" {
+  description = "Placeholder Mulesoft client secret for the DEV environment. Replace with a real secret before non-demo use."
+  type        = string
+  default     = "PLACEHOLDER_MULESOFT_CLIENT_SECRET"
+  sensitive   = true
+}
+
+variable "redis_password" {
+  description = "Placeholder Redis password for the DEV environment. Replace with a real secret before non-demo use."
+  type        = string
+  default     = "PLACEHOLDER_REDIS_PASSWORD"
+  sensitive   = true
+}
+
+variable "database_password" {
+  description = "Placeholder database password for the DEV environment. Replace with a real secret before non-demo use."
+  type        = string
+  default     = "PLACEHOLDER_DATABASE_PASSWORD"
+  sensitive   = true
 }
 
 # ------------------------------------------------------------------------------

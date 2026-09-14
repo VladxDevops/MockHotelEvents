@@ -31,6 +31,28 @@ version = "1.0"
 
 This project is intentionally a learning-by-doing repository for mock enterprise architecture and integration work.
 
+This changelog is intentionally append-only. Historical entries are preserved and new work is added as dated updates rather than replacing earlier project context.
+
+## [2026-09-14]
+### Added
+- Added explicit DEV service-account bootstrap definitions under `PLATFORM/PROVIDERS/GCP/TERRAFORM/main.tf` for the initial runtime identities:
+  - `he-dev-inquiry`
+  - `he-dev-availability`
+  - `he-dev-pricing`
+  - `he-dev-booking`
+  - `he-dev-operations`
+- Added matching per-service-account Terraform variables in `PLATFORM/PROVIDERS/GCP/TERRAFORM/variables.tf` and values in `PLATFORM/PROVIDERS/GCP/TERRAFORM/dev.tfvars` to keep the bootstrap configurable for a new GCP project.
+- Documented the standard IAM member syntax for DEV service accounts in both `DOCUMENTATION/INTERNAL/security.md` and `PLATFORM/PROVIDERS/GCP/DEV/README.md`.
+
+### Updated
+- Replaced the earlier generalized role assignment pattern with explicit `google_project_iam_member` resources, each using the format:
+  - `member = "serviceAccount:service-${var.<service_account_id>}@${var.compute_project_id}.iam.gserviceaccount.com"`
+- Kept the project bootstrap safe for a brand-new GCP deployment by using the documented placeholder secret and identity values while the real runtime credentials are still pending.
+- Documented the append-only changelog policy to ensure older history remains intact while new work is recorded in date-based entries.
+
+### Validation
+- Ran Terraform formatting and validation successfully for the GCP Terraform configuration.
+
 ## [2026-09-11]
 ### Added
 - Added an Apigee-focused Terraform foundation under `PLATFORM/PROVIDERS/GCP/TERRAFORM/MODULES/APIgee/` for the hotel events platform.

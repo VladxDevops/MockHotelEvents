@@ -15,11 +15,11 @@
 # ------------------------------------------------------------------------------
 
 # Conditionally provision a brand-new GCP project if create_project = true.
-# If create_project = false, the existing project identified by var.project_id is used.
+# If create_project = false, the existing project identified by var.compute_project_id is used.
 resource "google_project" "project" {
   count               = var.create_project ? 1 : 0
-  name                = var.project_name
-  project_id          = var.project_id
+  name                = var.compute_project_name
+  project_id          = var.compute_project_id
   org_id              = var.org_id != "" ? var.org_id : null
   folder_id           = var.folder_id != "" ? var.folder_id : null
   billing_account     = var.billing_account != "" ? var.billing_account : null
@@ -27,14 +27,25 @@ resource "google_project" "project" {
 }
 
 locals {
-  project_id = var.create_project ? google_project.project[0].project_id : var.project_id
+  project_id = var.create_project ? google_project.project[0].project_id : var.compute_project_id
 
   required_services = [
     "cloudresourcemanager.googleapis.com",
     "compute.googleapis.com",
     "servicenetworking.googleapis.com",
-    "apigee.googleapis.com"
+    "apigee.googleapis.com",
+    "iam.googleapis.com",
+    "secretmanager.googleapis.com"
   ]
+
+  dev_runtime_secrets = {
+    "hotel-events-dev-salesforce-api-key"       = var.salesforce_api_key
+    "hotel-events-dev-salesforce-client-secret" = var.salesforce_client_secret
+    "hotel-events-dev-mulesoft-client-id"       = var.mulesoft_client_id
+    "hotel-events-dev-mulesoft-client-secret"   = var.mulesoft_client_secret
+    "hotel-events-dev-redis-password"           = var.redis_password
+    "hotel-events-dev-database-password"        = var.database_password
+  }
 }
 
 # ------------------------------------------------------------------------------
@@ -210,6 +221,238 @@ resource "google_apigee_envgroup_attachment" "apigee_envgroup_attachment" {
 resource "google_apigee_instance_attachment" "apigee_instance_attachment" {
   instance_id = google_apigee_instance.apigee_instance.id
   environment = google_apigee_environment.apigee_env.name
+}
+
+# ------------------------------------------------------------------------------
+# 2.1 DEV Service Accounts, IAM, and Secret Manager Bootstrap
+# ------------------------------------------------------------------------------
+# These resources match the documented initial DEV inventory and intentionally use
+# placeholder values so a brand-new GCP project can be bootstrapped safely before
+# real credentials are supplied by the project owners.
+
+# Service accounts
+resource "google_service_account" "inquiry_sa" {
+  project      = local.project_id
+  account_id   = var.inquiry_service_account_id
+  display_name = "Hotel Events DEV Inquiry Service Account"
+
+  depends_on = [time_sleep.wait_for_services]
+}
+
+resource "google_service_account" "availability_sa" {
+  project      = local.project_id
+  account_id   = var.availability_service_account_id
+  display_name = "Hotel Events DEV Availability Service Account"
+
+  depends_on = [time_sleep.wait_for_services]
+}
+
+resource "google_service_account" "pricing_sa" {
+  project      = local.project_id
+  account_id   = var.pricing_service_account_id
+  display_name = "Hotel Events DEV Pricing Service Account"
+
+  depends_on = [time_sleep.wait_for_services]
+}
+
+resource "google_service_account" "booking_sa" {
+  project      = local.project_id
+  account_id   = var.booking_service_account_id
+  display_name = "Hotel Events DEV Booking Service Account"
+
+  depends_on = [time_sleep.wait_for_services]
+}
+
+resource "google_service_account" "operations_sa" {
+  project      = local.project_id
+  account_id   = var.operations_service_account_id
+  display_name = "Hotel Events DEV Operations Service Account"
+
+  depends_on = [time_sleep.wait_for_services]
+}
+
+
+# Inquiry service account IAM roles
+resource "google_project_iam_member" "inquiry_log_writer" {
+  project = local.project_id
+  role    = "roles/logging.logWriter"
+  member  = "serviceAccount:service-${var.inquiry_service_account_id}@${var.compute_project_id}.iam.gserviceaccount.com"
+
+  depends_on = [google_service_account.inquiry_sa]
+}
+
+resource "google_project_iam_member" "inquiry_metric_writer" {
+  project = local.project_id
+  role    = "roles/monitoring.metricWriter"
+  member  = "serviceAccount:service-${var.inquiry_service_account_id}@${var.compute_project_id}.iam.gserviceaccount.com"
+
+  depends_on = [google_service_account.inquiry_sa]
+}
+
+resource "google_project_iam_member" "inquiry_pubsub_publisher" {
+  project = local.project_id
+  role    = "roles/pubsub.publisher"
+  member  = "serviceAccount:service-${var.inquiry_service_account_id}@${var.compute_project_id}.iam.gserviceaccount.com"
+
+  depends_on = [google_service_account.inquiry_sa]
+}
+
+
+# Availability service account IAM roles
+resource "google_project_iam_member" "availability_pubsub_publisher" {
+  project = local.project_id
+  role    = "roles/pubsub.publisher"
+  member  = "serviceAccount:service-${var.availability_service_account_id}@${var.compute_project_id}.iam.gserviceaccount.com"
+
+  depends_on = [google_service_account.availability_sa]
+}
+
+resource "google_project_iam_member" "availability_pubsub_subscriber" {
+  project = local.project_id
+  role    = "roles/pubsub.subscriber"
+  member  = "serviceAccount:service-${var.availability_service_account_id}@${var.compute_project_id}.iam.gserviceaccount.com"
+
+  depends_on = [google_service_account.availability_sa]
+}
+
+resource "google_project_iam_member" "availability_log_writer" {
+  project = local.project_id
+  role    = "roles/logging.logWriter"
+  member  = "serviceAccount:service-${var.availability_service_account_id}@${var.compute_project_id}.iam.gserviceaccount.com"
+
+  depends_on = [google_service_account.availability_sa]
+}
+
+resource "google_project_iam_member" "availability_metric_writer" {
+  project = local.project_id
+  role    = "roles/monitoring.metricWriter"
+  member  = "serviceAccount:service-${var.availability_service_account_id}@${var.compute_project_id}.iam.gserviceaccount.com"
+
+  depends_on = [google_service_account.availability_sa]
+}
+
+
+# Pricing service account IAM roles
+resource "google_project_iam_member" "pricing_pubsub_publisher" {
+  project = local.project_id
+  role    = "roles/pubsub.publisher"
+  member  = "serviceAccount:service-${var.pricing_service_account_id}@${var.compute_project_id}.iam.gserviceaccount.com"
+
+  depends_on = [google_service_account.pricing_sa]
+}
+
+resource "google_project_iam_member" "pricing_pubsub_subscriber" {
+  project = local.project_id
+  role    = "roles/pubsub.subscriber"
+  member  = "serviceAccount:service-${var.pricing_service_account_id}@${var.compute_project_id}.iam.gserviceaccount.com"
+
+  depends_on = [google_service_account.pricing_sa]
+}
+
+resource "google_project_iam_member" "pricing_log_writer" {
+  project = local.project_id
+  role    = "roles/logging.logWriter"
+  member  = "serviceAccount:service-${var.pricing_service_account_id}@${var.compute_project_id}.iam.gserviceaccount.com"
+
+  depends_on = [google_service_account.pricing_sa]
+}
+
+resource "google_project_iam_member" "pricing_metric_writer" {
+  project = local.project_id
+  role    = "roles/monitoring.metricWriter"
+  member  = "serviceAccount:service-${var.pricing_service_account_id}@${var.compute_project_id}.iam.gserviceaccount.com"
+
+  depends_on = [google_service_account.pricing_sa]
+}
+
+
+# Booking service account IAM roles
+resource "google_project_iam_member" "booking_pubsub_publisher" {
+  project = local.project_id
+  role    = "roles/pubsub.publisher"
+  member  = "serviceAccount:service-${var.booking_service_account_id}@${var.compute_project_id}.iam.gserviceaccount.com"
+
+  depends_on = [google_service_account.booking_sa]
+}
+
+resource "google_project_iam_member" "booking_pubsub_subscriber" {
+  project = local.project_id
+  role    = "roles/pubsub.subscriber"
+  member  = "serviceAccount:service-${var.booking_service_account_id}@${var.compute_project_id}.iam.gserviceaccount.com"
+
+  depends_on = [google_service_account.booking_sa]
+}
+
+resource "google_project_iam_member" "booking_log_writer" {
+  project = local.project_id
+  role    = "roles/logging.logWriter"
+  member  = "serviceAccount:service-${var.booking_service_account_id}@${var.compute_project_id}.iam.gserviceaccount.com"
+
+  depends_on = [google_service_account.booking_sa]
+}
+
+resource "google_project_iam_member" "booking_metric_writer" {
+  project = local.project_id
+  role    = "roles/monitoring.metricWriter"
+  member  = "serviceAccount:service-${var.booking_service_account_id}@${var.compute_project_id}.iam.gserviceaccount.com"
+
+  depends_on = [google_service_account.booking_sa]
+}
+
+
+# Operations service account IAM roles
+resource "google_project_iam_member" "operations_pubsub_publisher" {
+  project = local.project_id
+  role    = "roles/pubsub.publisher"
+  member  = "serviceAccount:service-${var.operations_service_account_id}@${var.compute_project_id}.iam.gserviceaccount.com"
+
+  depends_on = [google_service_account.operations_sa]
+}
+
+resource "google_project_iam_member" "operations_log_writer" {
+  project = local.project_id
+  role    = "roles/logging.logWriter"
+  member  = "serviceAccount:service-${var.operations_service_account_id}@${var.compute_project_id}.iam.gserviceaccount.com"
+
+  depends_on = [google_service_account.operations_sa]
+}
+
+resource "google_project_iam_member" "operations_metric_writer" {
+  project = local.project_id
+  role    = "roles/monitoring.metricWriter"
+  member  = "serviceAccount:service-${var.operations_service_account_id}@${var.compute_project_id}.iam.gserviceaccount.com"
+
+  depends_on = [google_service_account.operations_sa]
+}
+
+resource "google_project_iam_member" "operations_cloudtrace_agent" {
+  project = local.project_id
+  role    = "roles/cloudtrace.agent"
+  member  = "serviceAccount:service-${var.operations_service_account_id}@${var.compute_project_id}.iam.gserviceaccount.com"
+
+  depends_on = [google_service_account.operations_sa]
+}
+
+resource "google_secret_manager_secret" "dev_runtime" {
+  for_each = local.dev_runtime_secrets
+
+  project   = local.project_id
+  secret_id = each.key
+
+  replication {
+    auto {}
+  }
+
+  depends_on = [time_sleep.wait_for_services]
+}
+
+resource "google_secret_manager_secret_version" "dev_runtime" {
+  for_each = local.dev_runtime_secrets
+
+  secret      = google_secret_manager_secret.dev_runtime[each.key].id
+  secret_data = each.value
+
+  depends_on = [google_secret_manager_secret.dev_runtime]
 }
 
 # ------------------------------------------------------------------------------
