@@ -52,5 +52,5 @@ The infrastructure-as-code deployment for Apigee X is maintained under the GCP P
 Apigee sits at the perimeter (Northbound) of the Hotel Events architecture:
 1. **API Façade**: Exposes `/v1/events/inquiries`, `/v1/events/availability`, `/v1/events/pricing`, and `/v1/healthz`.
 2. **Policy Enforcement**: Enforces API keys, OAuth 2.0 tokens, Spike Arrest, Quota management, and request schema validation.
-3. **Ingress Routing**: Accepts traffic via a Global External Application Load Balancer through Private Service Connect (PSC) NEG.
+3. **Ingress Routing**: Accepts traffic via a Regional External Application Load Balancer through Private Service Connect (PSC) NEG.
 4. **Backend Integration**: Forwards validated, normalized requests to GCP backend services (Cloud Run / Cloud Functions) or MuleSoft integration flows.

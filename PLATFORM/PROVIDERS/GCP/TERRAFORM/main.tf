@@ -213,7 +213,7 @@ resource "google_apigee_instance_attachment" "apigee_instance_attachment" {
 }
 
 # ------------------------------------------------------------------------------
-# 6. Ingress Routing: Global External Application Load Balancer with PSC NEG
+# 6. Ingress Routing: Regional External Application Load Balancer with PSC NEG
 # ------------------------------------------------------------------------------
 
 # Regional Network Endpoint Group of type PRIVATE_SERVICE_CONNECT pointing to Apigee
@@ -234,24 +234,26 @@ resource "google_compute_region_network_endpoint_group" "apigee_psc_neg" {
   depends_on = [google_apigee_instance.apigee_instance]
 }
 
-# Static External IPv4 Address for the Load Balancer
-resource "google_compute_global_address" "apigee_lb_ip" {
+# Static External IPv4 Address for the Regional Load Balancer
+resource "google_compute_address" "apigee_lb_ip" {
   name         = "apigee-lb-ip"
-  description  = "Static public IP address for external Apigee Load Balancer"
+  description  = "Static public IP address for regional Apigee load balancer"
   ip_version   = "IPV4"
   address_type = "EXTERNAL"
+  region       = var.region
   project      = local.project_id
 
   depends_on = [time_sleep.wait_for_services]
 }
 
-# Global Backend Service referencing the Apigee PSC NEG
+# Regional Backend Service referencing the Apigee PSC NEG
 # Note: PSC NEGs do not support active health checks in Google Cloud
-resource "google_compute_backend_service" "apigee_backend" {
+resource "google_compute_region_backend_service" "apigee_backend" {
   name                  = "apigee-backend-service"
   description           = "Backend service routing traffic to Apigee X PSC NEG"
   protocol              = "HTTPS"
   load_balancing_scheme = "EXTERNAL_MANAGED"
+  region                = var.region
   project               = local.project_id
 
   backend {
@@ -263,34 +265,39 @@ resource "google_compute_backend_service" "apigee_backend" {
   }
 }
 
-# URL Map directing incoming requests to the Apigee backend service
-resource "google_compute_url_map" "apigee_url_map" {
+# Regional URL Map directing incoming requests to the Apigee backend service
+resource "google_compute_region_url_map" "apigee_url_map" {
   name            = "apigee-url-map"
   description     = "Default URL map routing all requests to Apigee backend"
-  default_service = google_compute_backend_service.apigee_backend.id
+  default_service = google_compute_region_backend_service.apigee_backend.id
+  region          = var.region
   project         = local.project_id
 }
 
-# Frontend 1: Target HTTP Proxy & Global Forwarding Rule (Port 80)
+# Frontend 1: Regional Target HTTP Proxy & Forwarding Rule (Port 80)
 # Enables immediate curl verification without requiring DNS propagation or TLS certificates
-resource "google_compute_target_http_proxy" "apigee_http_proxy" {
+resource "google_compute_region_target_http_proxy" "apigee_http_proxy" {
   name    = "apigee-http-proxy"
-  url_map = google_compute_url_map.apigee_url_map.id
+  url_map = google_compute_region_url_map.apigee_url_map.id
+  region  = var.region
   project = local.project_id
 }
 
-resource "google_compute_global_forwarding_rule" "apigee_http_forwarding_rule" {
+resource "google_compute_forwarding_rule" "apigee_http_forwarding_rule" {
   name                  = "apigee-http-forwarding-rule"
-  description           = "Global forwarding rule for HTTP port 80"
-  target                = google_compute_target_http_proxy.apigee_http_proxy.id
+  description           = "Regional forwarding rule for HTTP port 80"
+  target                = google_compute_region_target_http_proxy.apigee_http_proxy.id
   port_range            = "80"
   ip_protocol           = "TCP"
-  ip_address            = google_compute_global_address.apigee_lb_ip.address
+  ip_address            = google_compute_address.apigee_lb_ip.address
   load_balancing_scheme = "EXTERNAL_MANAGED"
+  network               = google_compute_network.apigee_vpc.id
+  subnetwork            = google_compute_subnetwork.apigee_subnet.id
+  region                = var.region
   project               = local.project_id
 }
 
-# Frontend 2: Target HTTPS Proxy & Global Forwarding Rule (Port 443 with TLS cert)
+# Frontend 2: Regional Target HTTPS Proxy & Forwarding Rule (Port 443 with TLS cert)
 # Generates a self-signed TLS cert for development/testing matching the envgroup hostname
 resource "tls_private_key" "apigee_cert_key" {
   algorithm = "RSA"
@@ -322,21 +329,25 @@ resource "google_compute_ssl_certificate" "apigee_ssl_cert" {
   project     = local.project_id
 }
 
-resource "google_compute_target_https_proxy" "apigee_https_proxy" {
+resource "google_compute_region_target_https_proxy" "apigee_https_proxy" {
   name             = "apigee-https-proxy"
-  url_map          = google_compute_url_map.apigee_url_map.id
+  url_map          = google_compute_region_url_map.apigee_url_map.id
   ssl_certificates = [google_compute_ssl_certificate.apigee_ssl_cert.id]
+  region           = var.region
   project          = local.project_id
 }
 
-resource "google_compute_global_forwarding_rule" "apigee_https_forwarding_rule" {
+resource "google_compute_forwarding_rule" "apigee_https_forwarding_rule" {
   name                  = "apigee-https-forwarding-rule"
-  description           = "Global forwarding rule for HTTPS port 443"
-  target                = google_compute_target_https_proxy.apigee_https_proxy.id
+  description           = "Regional forwarding rule for HTTPS port 443"
+  target                = google_compute_region_target_https_proxy.apigee_https_proxy.id
   port_range            = "443"
   ip_protocol           = "TCP"
-  ip_address            = google_compute_global_address.apigee_lb_ip.address
+  ip_address            = google_compute_address.apigee_lb_ip.address
   load_balancing_scheme = "EXTERNAL_MANAGED"
+  network               = google_compute_network.apigee_vpc.id
+  subnetwork            = google_compute_subnetwork.apigee_subnet.id
+  region                = var.region
   project               = local.project_id
 }
 
@@ -379,3 +390,7 @@ resource "null_resource" "sample_proxy_deployment" {
     google_apigee_envgroup_attachment.apigee_envgroup_attachment
   ]
 }
+
+# Pipeline and CI/CD status: PENDING / NOT STARTED
+# This repo currently implements the DEV-first infrastructure foundation only.
+# Automated pipeline validation, GitOps deployment orchestration, and CI/CD promotion flows are planned for a later phase.

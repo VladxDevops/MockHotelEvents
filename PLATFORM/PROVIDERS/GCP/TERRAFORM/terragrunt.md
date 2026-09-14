@@ -32,6 +32,10 @@ version = "1.0"
 
 ## Purpose
 
+> Status: Pending / Not started
+>
+> The pipeline automation, GitOps controller setup, and CI/CD integration described below are planned but not yet implemented in this repository. This document reflects the target delivery model rather than an active deployment workflow.
+
 This document explains how Terragrunt can fit into the Hotel Events project as a thin orchestration layer over Terraform. It supports the repository’s current architecture goals:
 
 - DEV-first infrastructure delivery

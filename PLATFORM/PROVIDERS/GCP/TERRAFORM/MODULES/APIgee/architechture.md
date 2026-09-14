@@ -1,7 +1,7 @@
 # Apigee X MVP Infrastructure Architecture (Public Ingress)
 
 ## Overview
-This document outlines the Minimal Viable Product (MVP) architecture for deploying an evaluation-based **Apigee X** environment on Google Cloud Platform using Terraform. It features a fully private Apigee runtime exposed via a Global External Application Load Balancer using Private Service Connect (PSC).
+This document outlines the Minimal Viable Product (MVP) architecture for deploying an evaluation-based **Apigee X** environment on Google Cloud Platform using Terraform. It features a fully private Apigee runtime exposed via a Regional External Application Load Balancer using Private Service Connect (PSC).
 
 ## Architecture Layout
 
@@ -9,7 +9,7 @@ This document outlines the Minimal Viable Product (MVP) architecture for deployi
                            │
                            ▼
     ┌──────────────────────────────────────────────┐
-    │ Global External Application Load Balancer    │
+    │ Regional External Application Load Balancer │
     │ (Public IP + Managed TLS / Self-Signed Cert) │
     └──────────────────────┬───────────────────────┘
                            │

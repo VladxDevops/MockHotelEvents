@@ -27,9 +27,11 @@ version = "1.0"
 - When NOT to Retrieve: Working on application code, Salesforce, MuleSoft, or core business logic.
 -->
 
+
 # PLATFORM / PROVIDERS / GCP - AI Agent Guide
 
 This guide helps AI agents navigate and understand the GCP infrastructure implementation for the Hotel Events project.
+
 
 ## Folder overview
 
@@ -44,6 +46,7 @@ The GCP provider implementation contains:
 | `OBSERVABILITY/` | Monitoring and logging configuration | Reserved |
 | `SECURITY/` | Security policies and compliance | Reserved |
 
+
 ## Key documentation entry points
 
 ### Infrastructure planning
@@ -54,11 +57,14 @@ The GCP provider implementation contains:
 - `TERRAFORM/cloud-infrastructure-checklist.md` — Full resource checklist
 - `TERRAFORM/dev-environment-starter-architecture.md` — DEV environment design
 
+
 ### Environment-specific context
 - `DEV/README.md` — Development environment characteristics and governance
 
+
 ### Related architecture
 - `DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md` (parent project) — Include GCP context
+
 
 ## Terragrunt structure
 
@@ -94,6 +100,7 @@ Each component folder in `live/{env}/` contains a `terragrunt.hcl` file that:
 - Passes environment-specific inputs
 - Defines component dependencies
 
+
 ### Module structure
 
 ```
@@ -112,6 +119,7 @@ modules/
   └── gitops/
 ```
 
+
 ## Agent task patterns
 
 ### Creating a new Terraform module
@@ -120,11 +128,13 @@ modules/
 3. Document in `README.md`
 4. Make environment-agnostic (all environment differences go in Terragrunt)
 
+
 ### Deploying a component to an environment
 1. Create `live/{env}/{component}/terragrunt.hcl`
 2. Reference the module from `../../../modules/{component}`
 3. Pass environment-specific inputs
 4. Define dependencies on other components if needed
+
 
 ### Creating a new environment (TEST, STAGING, PROD)
 1. Copy `live/dev/` structure to `live/{env}/`
@@ -137,11 +147,13 @@ modules/
 3. Create `README.md` with environment characteristics
 4. Validate with `terragrunt plan` before applying
 
+
 ### Modifying configuration across all environments
 1. Update the module in `modules/{component}/`
 2. Update component configs in `live/{env}/{component}/`
 3. Test in DEV first with `terragrunt plan`
 4. Promote through TEST, STAGING, PROD following approval gates
+
 
 ## Core components
 
@@ -151,11 +163,13 @@ modules/
 - Private service access for managed services
 - Load balancing if required
 
+
 ### IAM
 - Service accounts per application or component
 - Role bindings with least-privilege
 - Workload Identity for service-to-service auth
 - Cross-environment access restrictions
+
 
 ### Messaging (Pub/Sub)
 - Topics for key event types (lead, inquiry, availability, quote, booking, handoff)
@@ -163,11 +177,13 @@ modules/
 - Dead-letter queue pattern
 - Retry and backoff configuration
 
+
 ### Cache (Redis)
 - Memorystore Redis instance
 - Single-node for DEV, multi-node for PROD
 - TTL and eviction policies
 - Connection pool configuration
+
 
 ### Database (Cloud SQL)
 - Lightweight operational data store
@@ -175,11 +191,13 @@ modules/
 - Backup and recovery configuration
 - Migration and rollback strategy
 
+
 ### Monitoring
 - Cloud Logging sinks and log aggregation
 - Cloud Monitoring dashboards and alerts
 - Cloud Trace configuration
 - OpenTelemetry collector setup
+
 
 ### Cloud Run
 - API and event processing services
@@ -187,11 +205,13 @@ modules/
 - Environment variables and secrets
 - Service-to-service communication
 
+
 ### GitOps
 - Argo CD or Flux for infrastructure sync
 - Git-driven environment reconciliation
 - Drift detection and correction
 - Rollback and promotion workflows
+
 
 ## DEV environment specifics
 
@@ -208,6 +228,7 @@ The DEV environment is configured for rapid iteration:
 | Auto-cleanup | Enabled |
 
 See `DEV/README.md` for full DEV environment context.
+
 
 ## Deployment workflow
 
@@ -245,6 +266,7 @@ terragrunt run-all plan
 terragrunt run-all apply
 ```
 
+
 ## Security and IAM
 
 ### Least privilege
@@ -262,6 +284,7 @@ terragrunt run-all apply
 - Terraform state tracked in version control
 - GitOps sync events monitored
 
+
 ## Observability
 
 ### Logging
@@ -274,10 +297,12 @@ terragrunt run-all apply
 - Error rates and retry attempts
 - Resource utilization and cost tracking
 
+
 ### Tracing
 - OpenTelemetry instrumentation in all services
 - Distributed trace context propagated
 - Trace data stored in Cloud Trace
+
 
 ## Next steps for agents
 

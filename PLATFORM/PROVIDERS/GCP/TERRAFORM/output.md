@@ -1,4 +1,4 @@
-  ### Summary of Actions & Architecture Implemented                                                                                                                                             
+### Summary of Actions & Architecture Implemented                                                                                                                                             
                                                                                                                                                                                                 
   #### 1. Prerequisite & Security Review                                                                                                                                                        
                                                                                                                                                                                                 
@@ -25,7 +25,7 @@
       • Explicit attachments: google_apigee_envgroup_attachment and google_apigee_instance_attachment.                                                                                          
   • Northbound Ingress Routing:                                                                                                                                                                 
       • Private Service Connect (PSC) Network Endpoint Group (google_compute_region_network_endpoint_group of type PRIVATE_SERVICE_CONNECT) targeting Apigee's service_attachment.              
-      • Global External Application Load Balancer (EXTERNAL_MANAGED) backend service.                                                                                                           
+      • Regional External Application Load Balancer (EXTERNAL_MANAGED) backend service.                                                                                                           
       • Dual frontend forwarding rules on a static external IP:                                                                                                                                 
           • Port 80 (HTTP): Target HTTP proxy for immediate DNS/cert-free testing.                                                                                                              
           • Port 443 (HTTPS): Target HTTPS proxy with self-signed TLS cert matching var.apigee_envgroup_hostnames.                                                                              

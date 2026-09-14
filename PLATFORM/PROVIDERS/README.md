@@ -19,9 +19,11 @@ version = "1.0"
 > **Related**: [`spects.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/spects.md) | [`architecture.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md) | [`GCP/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/PROVIDERS/GCP/README.md)  
 > **Progressive Tier**: Tier 3
 
+
 # PLATFORM / PROVIDERS - Infrastructure Index
 
 This directory index routes maintainers and AI agents to cloud provider and infrastructure context for the Hotel Events platform.
+
 
 ## Contents
 
@@ -32,6 +34,7 @@ This directory index routes maintainers and AI agents to cloud provider and infr
 | `AZURE/` | Reserved | Future Microsoft Azure provider (not implemented) |
 | `ONPREM/` | Reserved | Future on-premises infrastructure (not implemented) |
 
+
 ## Current focus: GCP
 
 The Hotel Events project is currently implemented on Google Cloud Platform (GCP). The GCP provider folder contains:
@@ -41,6 +44,7 @@ The Hotel Events project is currently implemented on Google Cloud Platform (GCP)
 - **Security and identity**: IAM, service accounts, and access controls
 - **Observability**: Logging, monitoring, and tracing configuration
 - **CI/CD integration**: GitOps deployment patterns and promotion workflows
+
 
 ### GCP structure
 
@@ -53,6 +57,7 @@ The Hotel Events project is currently implemented on Google Cloud Platform (GCP)
 | `GCP/OBSERVABILITY/` | Monitoring and logging setup (reserved) |
 | `GCP/SECURITY/` | Security policies and compliance documentation (reserved) |
 
+
 ### Key GCP documentation
 
 Start with:
@@ -62,11 +67,13 @@ Start with:
 4. [`PLATFORM/PROVIDERS/GCP/TERRAFORM/folder-structure.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/PROVIDERS/GCP/TERRAFORM/folder-structure.md) — Folder layout and responsibilities
 5. [`PLATFORM/PROVIDERS/GCP/DEV/README.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/PLATFORM/PROVIDERS/GCP/DEV/README.md) — DEV environment context
 
+
 ## Future providers
 
 AWS and AZURE folders are reserved for future implementations. When those providers are added, they should follow the same documentation and folder patterns established for GCP.
 
 On-premises (ONPREM) infrastructure would use similar patterns but adapted for infrastructure-as-code tools suitable for on-premises environments (e.g., Terraform with local providers or Ansible).
+
 
 ## Integration with core architecture
 
@@ -79,6 +86,7 @@ The PLATFORM/PROVIDERS structure serves the Hotel Events architecture by:
 - **Security first**: Least-privilege IAM, secret management, and audit trails built in
 - **Observability**: Monitoring and tracing configuration co-located with infrastructure
 
+
 ## Recommended reading order
 
 1. **Project scope**: `Agents.md` and `DOCUMENTATION/INTERNAL/spects.md`
@@ -86,6 +94,7 @@ The PLATFORM/PROVIDERS structure serves the Hotel Events architecture by:
 3. **Using GCP**: `PLATFORM/PROVIDERS/GCP/README.md`
 4. **Infrastructure patterns**: `PLATFORM/PROVIDERS/GCP/TERRAFORM/terragrunt.md`
 5. **Environment specifics**: `PLATFORM/PROVIDERS/GCP/DEV/README.md`
+
 
 ## Security and compliance
 
@@ -97,6 +106,7 @@ All provider implementations should enforce:
 - audit trails for infrastructure changes
 - network isolation and firewall rules
 - regular security reviews and updates
+
 
 ## Cost management
 

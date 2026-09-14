@@ -88,6 +88,11 @@ The DEV environment should support this core flow:
 - Log and metric dashboards for event throughput, errors, and latency
 
 ### GitOps and delivery
+
+> Status: Pending / Not started
+>
+> GitOps sync, Terragrunt live folders, and automated promotion logic are planned for a future phase and are not yet implemented.
+
 - Argo CD or Flux for sync and deployment promotion
 - Git repository as source of truth
 - Separate config values per environment

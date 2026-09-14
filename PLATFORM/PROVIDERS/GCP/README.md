@@ -25,6 +25,7 @@ version = "1.0"
 
 This directory index routes maintainers and AI agents to platform infrastructure context for the Hotel Events GCP provider setup.
 
+
 ## Contents
 
 | Folder | Purpose |
@@ -35,6 +36,7 @@ This directory index routes maintainers and AI agents to platform infrastructure
 | `OBSERVABILITY/` | Monitoring, logging, and observability configuration |
 | `SECURITY/` | Security policies, access controls, and compliance documentation |
 
+
 ## Key documentation entry points
 
 - `TERRAFORM/README.md` — Apigee X Evaluation architecture, Terraform deployment, and Terragrunt overview
@@ -44,6 +46,7 @@ This directory index routes maintainers and AI agents to platform infrastructure
 - `TERRAFORM/dev-environment-starter-architecture.md` — DEV environment starter plan
 - `DEV/README.md` — DEV environment context, characteristics, and deployment guidance
 
+
 ## Recommended reading order
 
 1. `DOCUMENTATION/INTERNAL/spects.md` (project specs)
@@ -52,6 +55,7 @@ This directory index routes maintainers and AI agents to platform infrastructure
 4. `TERRAFORM/terragrunt.md` (Terragrunt introduction)
 5. `TERRAFORM/folder-structure.md` (folder layout and responsibilities)
 6. Specific module or environment documentation as needed
+
 
 ## Environment structure
 
@@ -63,6 +67,7 @@ The project follows a four-environment model:
 
 Each environment mirrors the same infrastructure pattern but with environment-specific resource sizing, access controls, and deployment gates.
 
+
 ## Security baseline
 
 All environments enforce:
@@ -72,6 +77,7 @@ All environments enforce:
 - network isolation and firewall rules
 - audit trails for infrastructure changes
 - encryption for data at rest and in transit
+
 
 ## Observability baseline
 
@@ -83,7 +89,12 @@ All environments include:
 - correlation IDs and trace propagation
 - environment-specific dashboards and alerts
 
+
 ## CI/CD integration
+
+> Status: Pending / Not started
+>
+> This pipeline, deployment automation, and GitOps orchestration work is intentionally deferred for the current DEV-first implementation. The repository does not yet include an active CI/CD pipeline or automated promotion workflow.
 
 Infrastructure changes follow the standard GitOps workflow:
 1. Infrastructure changes are made in version control
@@ -91,6 +102,7 @@ Infrastructure changes follow the standard GitOps workflow:
 3. Changes are reviewed and approved
 4. Deployment is triggered automatically (DEV) or via approval (higher environments)
 5. Drift detection monitors ongoing compliance
+
 
 ## Next steps
 

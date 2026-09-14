@@ -32,6 +32,10 @@ version = "1.0"
 
 ## Purpose
 
+> Status: Pending / Not started
+>
+> This Terragrunt folder layout is a target-state architecture for future environment automation. The live/ and environment-specific Terragrunt files are not yet created in the repository.
+
 This document defines the exact folder structure and responsibilities for the Hotel Events project using Terragrunt to manage Terraform across DEV, TEST, STAGING, and PROD environments.
 
 This is a documentation-only specification. It does not include actual Terraform or Terragrunt configuration code, only folder organization and high-level responsibility definitions.

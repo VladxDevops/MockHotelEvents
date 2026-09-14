@@ -62,6 +62,10 @@ Start from `Agents.md` and `DOCUMENTATION/INTERNAL/spects.md` for the canonical 
 
 ## Terragrunt
 
+> Status: Pending / Not started
+>
+> Terragrunt configuration, live environment folders, and environment promotion automation are planned for a later implementation phase and are not yet active in this repository.
+
 Terragrunt is a recommended wrapper around Terraform for this repo’s multi-environment GCP design.
 
 It helps manage:
@@ -100,9 +104,9 @@ This directory contains a complete, MVP-ready Terraform codebase for provisionin
    - Apigee Instance in `us-central1`.
    - Environment `dev` + Environment Group `dev-env-group`.
    - Environment and Instance attachments.
-6. **Northbound Ingress (L7 Load Balancer)**:
+6. **Northbound Ingress (Regional L7 Load Balancer)**:
    - Private Service Connect (PSC) NEG (`google_compute_region_network_endpoint_group`).
-   - Global External Application Load Balancer (`EXTERNAL_MANAGED`).
+   - Regional External Application Load Balancer (`EXTERNAL_MANAGED`).
    - Dual frontends: HTTP (Port 80) and HTTPS (Port 443 with self-signed certificate).
 7. **Sample Proxy & Verification**:
    - Bundled mock hotel events proxy (`sample-proxy/mock-hotel-events.zip`).

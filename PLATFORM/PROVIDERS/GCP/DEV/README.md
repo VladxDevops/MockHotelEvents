@@ -64,10 +64,9 @@ The DEV environment includes:
 - Basic firewall rules with developer access
 
 ### API Gateway & Management (Apigee X Evaluation)
-- Apigee Organization (`billing_type = "EVALUATION"`, runtime `CLOUD`, CMEK-free)
 - Apigee Instance in `us-central1` attached to `/22` peering range
 - Environment `dev` attached to Environment Group `dev-env-group`
-- Private Service Connect (PSC) NEG connected to Global External Application Load Balancer
+- Private Service Connect (PSC) NEG connected to Regional External Application Load Balancer
 - Dual frontends: HTTP (Port 80) for testing and HTTPS (Port 443 with self-signed certificate)
 - Sample mock hotel events proxy (`/v1/healthz`, `/v1/events/inquiries`) with automated deployment script (`deploy-proxy.sh`) and smoke tester (`test-apigee.sh`)
 
@@ -110,6 +109,11 @@ The DEV environment includes:
 - Developer-friendly dashboards
 
 ### GitOps
+
+> Status: Pending / Not started
+>
+> GitOps reconciliation, branch-driven promotions, and deployment automation are planned for a later phase and are not yet implemented in this environment.
+
 - Argo CD or Flux for DEV namespace/project
 - Git-driven deployment from main or development branch
 - Automatic drift reconciliation
@@ -133,10 +137,16 @@ terragrunt apply
 ```
 
 ### CI/CD deployment
+
+> Status: Pending / Not started
+>
+> Automated CI/CD validation and deployment hooks for DEV are not yet implemented. This section describes the target workflow only.
+
 - Changes to the infrastructure folder trigger CI validation
 - `terragrunt run-all plan` validates all DEV components
 - Merges to `main` automatically deploy to DEV
 - Tests validate deployment success
+
 
 ## Access and authentication
 
@@ -147,6 +157,7 @@ Each DEV service uses a dedicated service account:
 - `hotel-events-dev-pricing`
 - `hotel-events-dev-booking`
 
+
 ### Local developer access
 Developers use their Google Cloud identity or a shared DEV service account with:
 - `roles/compute.admin` for Cloud Run management
@@ -154,6 +165,7 @@ Developers use their Google Cloud identity or a shared DEV service account with:
 - `roles/storage.admin` for GCS access
 - `roles/logging.viewer` for log access
 - `roles/monitoring.viewer` for metrics access
+
 
 ### Secret management
 DEV secrets are stored in GCP Secret Manager:

@@ -111,6 +111,11 @@ This is a planning checklist for a realistic but mock GCP-based implementation o
 - [ ] Drift management and documentation
 
 ### 9. Deployment and release
+
+> Status: Pending / Not started
+>
+> CI/CD pipeline setup, validation automation, and deployment promotion flows are planned for a later implementation phase and are not yet active in this repository.
+
 - [ ] CI/CD pipeline for infrastructure changes
 - [ ] Validation pipeline for Terraform plans
 - [ ] Deployment flow for app and integration components
@@ -162,6 +167,11 @@ For the current phase, we are focusing on the DEV environment first. The remaini
 - Prod: final production-like environment for approved changes only
 
 ### GitOps model
+
+> Status: Pending / Not started
+>
+> GitOps controller setup, branch promotion flow, and automated sync enforcement are not yet configured or deployed.
+
 The repository will be aligned to a GitOps workflow:
 - Terraform and environment configuration live in Git
 - application manifests or deployment configuration live in Git

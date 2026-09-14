@@ -20,10 +20,10 @@ REQUIREMENTS & ARCHITECTURE:
 2. Core Infrastructure & Apigee X Model:
    - Apigee X Evaluation Organization (`google_apigee_organization` with `billing_type = "EVALUATION"` and no KMS/CMEK requirement).
    - Dedicated VPC (`apigee-vpc`) and Subnet (`apigee-subnet`).
-   - Proxy-only subnet (`purpose = "REGIONAL_MANAGED_PROXY"`) required for Global External Application Load Balancer.
+   - Proxy-only subnet (`purpose = "REGIONAL_MANAGED_PROXY"`) required for Regional External Application Load Balancer.
    - Private Service Access (PSA) range allocation (`google_compute_global_address`) and Service Networking connection (`google_service_networking_connection`).
    - Apigee Instance + Environment (`dev`) + Environment Group (`dev-env-group`).
-   - Ingress Routing: Global External Application Load Balancer connected to Apigee using a Private Service Connect (PSC) Network Endpoint Group (`google_compute_region_network_endpoint_group` of type `PRIVATE_SERVICE_CONNECT`).
+   - Ingress Routing: Regional External Application Load Balancer connected to Apigee using a Private Service Connect (PSC) Network Endpoint Group (`google_compute_region_network_endpoint_group` of type `PRIVATE_SERVICE_CONNECT`).
 
 3. File Structure to Generate:
    - `main.tf`: GCP Project creation, Provider setup, API enablement, VPC network, PSA peering, Apigee Organization/Instance/Env, PSC NEG, L7 Load Balancer, and sample `google_apigee_proxy_deployment`.
