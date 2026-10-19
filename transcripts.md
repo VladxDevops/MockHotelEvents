@@ -31,6 +31,18 @@ version = "1.0"
 
 Short project notes and major decisions for the Hotel Events Planning learning repository.
 
+## 2026-10-18 — Root README is a map, not a second spec
+- `README.MD` introduces the mock wedding inquiry, the stack, and the trust boundaries, then links to `spects.md`, the architecture docs, and component READMEs.
+- Component detail stays in those documents. The landing page records that Apigee Terraform, Salesforce notes, and a Redis sketch exist, and that MuleSoft, Kafka, and the full booking path are still specified rather than complete.
+- AI agent support is mentioned only as "agents are clients of the same APIs," with the catalog left in `ai-agent-connections.md`.
+
+## 2026-10-18 — AI agent connections are clients, not a new system of record
+- Planning decision: if sales people use one or more AI agents, those agents call the existing Apigee, Salesforce, and event contracts.
+- Connections are enablement switches per role and environment: northbound API tools, MCP over those tools, CRM user delegation, event subscriptions, channel drafts, knowledge read, cache read through an API, analytics views, document drafts, approval gates, observability read, and agent handoff events.
+- Commit actions for quote send, booking, price override, cancellation, and guest notification require a human approval id.
+- Redis stays a cache. Engineering agents that edit the repo do not receive business write tools.
+- Canonical plan: `AGENTS/PLANNING/PRODUCT-ROADMAP/ai-agent-connections.md`.
+
 ## 2026-09-11 — Apigee foundation for the hotel events platform
 - Created the first Terraform implementation for Apigee as a managed API gateway layer for the hotel events architecture.
 - Built the module under `PLATFORM/PROVIDERS/GCP/TERRAFORM/MODULES/APIgee/` and scoped it to the lowest-hanging-fruit pattern: Apigee organization, runtime instance, environment, and environment group.

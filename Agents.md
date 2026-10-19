@@ -185,6 +185,7 @@ Before generating or modifying code or documentation:
 
 ## Documentation map
 Start here:
+- `README.MD` — repository landing page
 - `AI_MANIFEST.toml` — machine-readable knowledge base control plane
 - `DOCUMENTATION/INTERNAL/spects.md` — central project summary
 - `DOCUMENTATION/INTERNAL/architecture.md` — detailed architecture reference
@@ -202,6 +203,7 @@ Start here:
 - `PLATFORM/PROVIDERS/GCP/TERRAFORM/README.md` — Apigee X Terraform infrastructure and deployment index
 - `PLATFORM/PROVIDERS/GCP/TERRAFORM/terragrunt.md` — Terragrunt multi-environment implementation
 - `PLATFORM/PROVIDERS/GCP/TERRAFORM/folder-structure.md` — Infrastructure folder organization and responsibilities
+- `AGENTS/PLANNING/PRODUCT-ROADMAP/ai-agent-connections.md` — connection types a hotel can enable for sales and other AI agents
 
 ## Practice and interview prep
 Use the repo as a working lab, not only as a document set:

@@ -5,7 +5,7 @@ topics = ["planning", "roadmap", "strategy", "knowledge-base", "index"]
 difficulty = "intermediate"
 progressive_tier = "Tier 2"
 parent = "Agents.md"
-children = ["AGENTS/PLANNING/PRODUCT-ROADMAP/data-storage-strategy.md", "AGENTS/PLANNING/PRODUCT-ROADMAP/product-ROADMAP.md"]
+children = ["AGENTS/PLANNING/PRODUCT-ROADMAP/ai-agent-connections.md", "AGENTS/PLANNING/PRODUCT-ROADMAP/data-storage-strategy.md", "AGENTS/PLANNING/PRODUCT-ROADMAP/product-ROADMAP.md"]
 related = [
     "DOCUMENTATION/INTERNAL/spects.md",
     "DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md",
@@ -35,6 +35,7 @@ This directory index routes maintainers and AI agents to the local documentation
 
 | File | Tier | Primary Topic |
 | :--- | :---: | :--- |
+| `ai-agent-connections.md` | Tier 2 | Connection types and scenarios for human-operated AI agents |
 | `data-storage-strategy.md` | Tier 2 | Data storage strategy for the Hotel Events Planning project |
 | `product-ROADMAP.md` | Tier 2 | Product Roadmap: Hotel Events Planning Template |
 

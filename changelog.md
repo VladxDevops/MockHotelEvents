@@ -33,6 +33,13 @@ This project is intentionally a learning-by-doing repository for mock enterprise
 
 This changelog is intentionally append-only. Historical entries are preserved and new work is added as dated updates rather than replacing earlier project context.
 
+## [2026-10-18]
+### Added
+- Wrote the root `README.MD` as the repository landing page for the wedding inquiry journey, stack, boundaries, and where to read next.
+- Added `AGENTS/PLANNING/PRODUCT-ROADMAP/ai-agent-connections.md` to plan the connection types a hotel can enable for AI agents.
+- Linked that plan from the product roadmap, the planning index, `Agents.md`, and `AI_MANIFEST.toml`.
+- Recorded sales as the first multi-agent scenario, with later roles for guests, operations, vendors, revenue, and operators. Booking and quote send stay behind a human approval.
+
 ## [2026-09-14]
 ### Added
 - Added explicit DEV service-account bootstrap definitions under `PLATFORM/PROVIDERS/GCP/TERRAFORM/main.tf` for the initial runtime identities:

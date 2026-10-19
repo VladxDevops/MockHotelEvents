@@ -49,6 +49,7 @@ troubleshooting = "TROUBLESHOOTING/"
 
 [entry_points]
 master_index = "Agents.md"
+root_readme = "README.MD"
 internal_index = "DOCUMENTATION/INTERNAL/spects.md"
 system_architecture = "DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md"
 security_directive = "DOCUMENTATION/INTERNAL/security.md"
@@ -60,6 +61,7 @@ redis_subproject = "APPS/REDIS/README.md"
 terraform_platform = "PLATFORM/PROVIDERS/GCP/TERRAFORM/README.md"
 skills_registry = "AGENTS/SKILLS/MAIN-PROJECT-SKILL/skill.md"
 progressive_disclosure_skill = "AGENTS/SKILLS/PROGRESSIVE-DISCLOSURE-SKILL/SKILL.md"
+ai_agent_connections = "AGENTS/PLANNING/PRODUCT-ROADMAP/ai-agent-connections.md"
 
 [indexes]
 documentation_hub = "DOCUMENTATION/INTERNAL/spects.md"

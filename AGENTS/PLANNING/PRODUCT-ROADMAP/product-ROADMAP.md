@@ -11,7 +11,8 @@ related = [
     "DOCUMENTATION/INTERNAL/ARCHITECTURE/architecture.md",
     "DOCUMENTATION/INTERNAL/security.md",
     "APPS/SALESFORCE/README.md",
-    "APPS/REDIS/README.md"
+    "APPS/REDIS/README.md",
+    "AGENTS/PLANNING/PRODUCT-ROADMAP/ai-agent-connections.md"
 ]
 updated_by = "AI Context Specialist"
 version = "1.0"
@@ -76,6 +77,16 @@ Create a repeatable event-planning platform pattern that helps hotels handle inq
 - Redis for fast cached lookups and session state
 - BigQuery or warehouse analytics for reporting and event intelligence
 - OpenTelemetry and GCP Monitoring for tracing, metrics, and alerts
+- Optional AI agent clients for sales and other roles, using the same APIs and events. Connection types and scenarios are planned in [`ai-agent-connections.md`](file:///home/pochitawork/InterviewCloudProjects/HOTELevents/AGENTS/PLANNING/PRODUCT-ROADMAP/ai-agent-connections.md).
+
+## AI agent friendliness
+Hotels may already give their people one or more AI agents. The platform should allow that without a second system of record.
+
+- Agents call the existing Apigee, Salesforce, and event contracts.
+- Each hotel enables connections per role: API tools, MCP tools, CRM user delegation, event subscriptions, drafts to Salesforce or chat, knowledge read, and a human approval gate.
+- Sales is the first scenario: inquire, check dates, and draft a quote. Sending a quote and confirming a booking stay with a person.
+- Later scenarios use the same switches for a guest concierge, a sales manager, event operations, vendors, revenue, guest messages, hotel configuration, and platform operators.
+- Engineering agents that edit this repository stay on `AGENTS/SKILLS/` and do not receive booking tools.
 
 ## Roadmap
 
@@ -115,6 +126,13 @@ Create a repeatable event-planning platform pattern that helps hotels handle inq
 - Add catering and room-block management
 - Add automated proposal generation
 - Add forecasting and cross-property analytics
+
+### Phase 6: Enable AI agent connections
+- Publish stable inquiry, availability, quote, and booking operations for agent clients
+- Add a per-hotel enablement record for the sales copilot in DEV (read and draft only)
+- Add an optional MCP wrapper over those same operations
+- Require a human approval id before quote send, booking confirm, price override, or guest notification
+- Add later roles one at a time: guest concierge, operations, vendor, revenue, and operator
 
 
 ## Commercial options
